@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #dbdbdb;
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.gradient-text {
+  /* background: linear-gradient(-70deg, #88d1ae 0%, #3e95f7 100%); */
+  background: linear-gradient(-70deg, #c6d188 15%, #3e95f7 85%);
+  background-clip: text; /* Standard CSS property */
+  -webkit-background-clip: text; /* WebKit-specific property */
+  color: transparent; /* Standard CSS property */
+  -webkit-text-fill-color: transparent; /* WebKit-specific property */
+}
