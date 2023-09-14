@@ -33,21 +33,23 @@ const SelectedProductPage = ({ data, capitalizeFirstLetter }) => {
   return (
     <>
       <ResponsiveContainer>
-        <TwoColumnLayout
-          leftColumn={<SelectedProductImage data={data} id={id} />}
-          rightColumn={
-            <SelectedProductInfo
-              addItemWithQuantity={addItemWithQuantity}
-              decrementQuantity={decrementQuantity}
-              incrementQuantity={incrementQuantity}
-              setQuantity={setQuantity}
-              data={data}
-              capitalizeFirstLetter={capitalizeFirstLetter}
-              id={id}
-              quantity={quantity}
-            />
-          }
-        ></TwoColumnLayout>
+        <div className=" mt-20">
+          <TwoColumnLayout
+            leftColumn={<SelectedProductImage data={data} id={id} />}
+            rightColumn={
+              <SelectedProductInfo
+                addItemWithQuantity={addItemWithQuantity}
+                decrementQuantity={decrementQuantity}
+                incrementQuantity={incrementQuantity}
+                setQuantity={setQuantity}
+                data={data}
+                capitalizeFirstLetter={capitalizeFirstLetter}
+                id={id}
+                quantity={quantity}
+              />
+            }
+          ></TwoColumnLayout>
+        </div>
       </ResponsiveContainer>
     </>
   );

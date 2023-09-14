@@ -32,7 +32,7 @@ const Cart = ({ capitalizeFirstLetter }) => {
                 <th className="px-2 py-2 text-left">Actions</th>
               </tr>
             </thead>
-            <tbody className="border">
+            <tbody className="">
               {Object.keys(cart).map((itemId) => {
                 const item = cart[itemId].item;
                 const quantity = cart[itemId].quantity;

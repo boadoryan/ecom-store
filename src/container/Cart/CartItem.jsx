@@ -14,7 +14,7 @@ const CartItem = ({
 }) => {
   const dispatch = useDispatch();
   return (
-    <tr key={itemId} className="mx-12 border">
+    <tr key={itemId} className="border">
       <td className="px-8 py-2">
         <div className="w-full h-full flex">
           <img className="h-[5rem] object-contain" src={item.image} alt="" />
