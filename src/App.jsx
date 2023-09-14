@@ -48,7 +48,10 @@ function App() {
               ></SelectedProductPage>
             }
           ></Route>
-          <Route path="/cart" element={<Cart />}></Route>
+          <Route
+            path="/cart"
+            element={<Cart capitalizeFirstLetter={capitalizeFirstLetter} />}
+          ></Route>
         </Routes>
       )}
       <Footer />

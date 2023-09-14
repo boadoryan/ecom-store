@@ -35,7 +35,6 @@ const SelectedProductPage = ({ data, capitalizeFirstLetter }) => {
       <ResponsiveContainer>
         <TwoColumnLayout
           leftColumn={<SelectedProductImage data={data} id={id} />}
-          // rightMargin={"mb-96"}
           rightColumn={
             <SelectedProductInfo
               addItemWithQuantity={addItemWithQuantity}

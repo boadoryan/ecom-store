@@ -25,7 +25,10 @@ const cartSlice = createSlice({
     updateItemQuantity: (state, action) => {
       const { id, quantity } = action.payload;
       if (state.items[id]) {
-        state.items[id].quantity = quantity;
+        state.items[id].quantity = Math.max(quantity, 0);
+      }
+      if (state.items[id].quantity === 0) {
+        delete state.items[id];
       }
     },
   },
