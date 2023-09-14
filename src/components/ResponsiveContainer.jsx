@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../Footer";
 
 const ResponsiveContainer = ({
   children,
@@ -7,23 +8,10 @@ const ResponsiveContainer = ({
   marginX,
   marginY,
 }) => {
-  const containerStyles = {
-    paddingTop: paddingY,
-    paddingBottom: paddingY,
-    paddingLeft: paddingX,
-    paddingRight: paddingX,
-    marginLeft: marginX,
-    marginRight: marginX,
-    marginTop: marginY,
-    marginBottom: marginY,
-  };
-
   return (
-    <div
-      className="container mx-auto px-4 sm:px-8 md:px-12 lg:px-32 max-w-[1920px] mt-[6rem]"
-      style={containerStyles}
-    >
-      {children}
+    <div className="flex flex-col min-h-screen">
+      <div className="flex-grow mx-36 my-12">{children}</div>
+      <Footer />
     </div>
   );
 };

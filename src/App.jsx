@@ -54,7 +54,6 @@ function App() {
           ></Route>
         </Routes>
       )}
-      <Footer />
     </>
   );
 }
