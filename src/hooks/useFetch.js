@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const useFetch = (url) => {
+const useFetch = (url, exchangeRate) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,7 +10,12 @@ const useFetch = (url) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(url);
-        setData(response.data);
+        // Multiply prices by 2 before setting the data
+        const dataWithDoubledPrices = response.data.map((item) => ({
+          ...item,
+          price: item.price * exchangeRate,
+        }));
+        setData(dataWithDoubledPrices);
         setLoading(false);
       } catch (err) {
         setError(err); // Capture and set the error
@@ -18,9 +23,9 @@ const useFetch = (url) => {
       }
     };
     fetchData();
-  }, [url]);
+  }, [url, exchangeRate]);
 
-  return { data, loading, error }; // Removed "products" if it's not used
+  return { data, loading, error };
 };
 
 export { useFetch };

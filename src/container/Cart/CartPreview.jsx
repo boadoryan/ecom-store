@@ -4,8 +4,6 @@ import { useSelector } from "react-redux";
 const CartPreview = () => {
   const cart = useSelector((state) => state.cart.items);
 
-  console.log(cart);
-
   return (
     <div className="absolute bg-white  p-4 right-0 shadow-lg mt-8 w-[36rem]">
       <h2 className="text-lg mb-4 font-semibold">Cart Preview</h2>

@@ -14,10 +14,6 @@ const FullProductList = ({ data, capitalizeFirstLetter }) => {
     return acc;
   }, {});
 
-  // const addItemToCart = (id) => {
-  //   console.log(data[id]);
-  // };
-
   return (
     <ResponsiveContainer>
       <HeroBanner
@@ -37,7 +33,6 @@ const FullProductList = ({ data, capitalizeFirstLetter }) => {
                   <ProductListItem
                     item={product}
                     capitalizeFirstLetter={capitalizeFirstLetter}
-                    // addItemToCart={addItemToCart}
                   ></ProductListItem>
                 </Link>
               </div>

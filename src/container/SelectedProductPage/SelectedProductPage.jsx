@@ -4,7 +4,7 @@ import TwoColumnLayout from "../../components/TwoColumnLayout";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { addItemToCart, removeItemFromCart } from "../../store/store";
+import { addItemToCart } from "../../store/cartSlice";
 import SelectedProductInfo from "./SelectedProductInfo";
 import SelectedProductImage from "./SelectedProductImage";
 

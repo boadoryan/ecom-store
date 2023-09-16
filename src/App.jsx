@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { useFetch } from "./hooks/useFetch";
 import FullProductList from "./container/FullProductList/FullProductList";
@@ -6,26 +6,34 @@ import SelectedProductPage from "./container/SelectedProductPage/SelectedProduct
 import { Link, Route, Routes } from "react-router-dom";
 import Navbar from "./Navbar";
 import Cart from "./container/Cart/Cart";
-import Footer from "./Footer";
+import useFetchExchangeRate from "./hooks/useFetchExchangeRate";
+import { capitalizeFirstLetter } from "./utils/stringUtils";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 function App() {
-  const { data, loading, error } = useFetch(
-    "https://fakestoreapi.com/products"
-  );
+  let price = 1;
 
-  const capitalizeFirstLetter = (string) => {
-    let words = string.split(" ");
+  const EXCHANGE_RATE_URL =
+    "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/cad.json";
 
-    for (let i = 0; i < words.length; i++) {
-      let word = words[i];
-      words[i] = word.charAt(0).toUpperCase() + word.slice(1);
-    }
+  const PRODUCTS_URL = "https://fakestoreapi.com/products";
 
-    return words.join(" ");
-  };
+  const {
+    loading: exchangeRateLoading,
+    error: exchangeRateError,
+    setCurrencyToConvertTo,
+    baseRate,
+    exchangeRate,
+  } = useFetchExchangeRate(EXCHANGE_RATE_URL);
+  const { data, loading, error } = useFetch(PRODUCTS_URL, exchangeRate);
+
   return (
     <>
-      <Navbar />
+      <Navbar
+        setCurrencyToConvertTo={setCurrencyToConvertTo}
+        exchangeRate={exchangeRate}
+      />
       {loading ? (
         <p>Loading...</p>
       ) : (

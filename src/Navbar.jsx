@@ -2,21 +2,27 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useSelector } from "react-redux";
-import CartPreview from "./container/Cart/CartPreview"; // Import the CartPreview component
+import { useSelector, useDispatch } from "react-redux";
+import CartPreview from "./container/Cart/CartPreview";
+import { updateCartPrices } from "./store/cartSlice"; // Import the action to update cart prices
 
-const Navbar = () => {
+const Navbar = ({ setCurrencyToConvertTo, exchangeRate }) => {
   const cart = useSelector((state) => state.cart.items);
-  const [isHovered, setIsHovered] = useState(false); // State to track hover
-
+  const [isHovered, setIsHovered] = useState(false);
   const totalQuantity = Object.keys(cart).length;
-
+  const dispatch = useDispatch();
   const handleHover = () => {
     setIsHovered(true);
   };
 
   const handleLeave = () => {
     setIsHovered(false);
+  };
+
+  const handleCurrencyChange = (e) => {
+    const newCurrency = e.target.value;
+    setCurrencyToConvertTo(newCurrency);
+    dispatch(updateCartPrices(exchangeRate));
   };
 
   return (
@@ -69,6 +75,19 @@ const Navbar = () => {
                 )}
               </Link>
               {isHovered && <CartPreview />}
+            </li>
+            <li>
+              <select
+                onChange={(e) => handleCurrencyChange(e)}
+                name="currency"
+                id="id"
+                className="bg-white"
+              >
+                <option value="cad">CAD</option>
+                <option value="usd">USD</option>
+                <option value="gbp">GBP</option>
+                <option value="eur">EUR</option>
+              </select>
             </li>
           </ul>
         </div>

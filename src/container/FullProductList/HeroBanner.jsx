@@ -31,8 +31,6 @@ const HeroBanner = ({ data, capitalizeFirstLetter }) => {
   const currentImage = data[currentImageIndex].image;
   const categories = [];
 
-  console.log(cleanAndCapitalize(data[0].category));
-
   return (
     <>
       <div className="mb-20">
