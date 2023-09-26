@@ -21,6 +21,9 @@ const CartPreview = () => {
             </div>
             <div className="col-span-3  p-2">
               <p className="font-bold overflow-hidden">{item.title}</p>
+              <p className="font-bold overflow-hidden">{`$${item.price.toFixed(
+                2
+              )}`}</p>
             </div>
             <div className="col-span-1  p-2 flex justify-center items-center">
               <p className="font-bold">{`x${quantity}`}</p>

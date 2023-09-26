@@ -1,10 +1,10 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { removeItemFromCart } from "../../store/cartSlice";
 import Button from "../../components/Button";
-
+import { updatePriceByCurrency } from "../../utils/stringUtils";
 const CartItem = ({
   itemId,
   item,
@@ -13,7 +13,12 @@ const CartItem = ({
   handleQuantityChange,
 }) => {
   const dispatch = useDispatch();
+  const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
+  const currencyToConvertTo = useSelector(
+    (state) => state.exchangeRate.currencyToConvertTo
+  );
 
+  console.log("exchangeRate in cartItem", exchangeRate);
   return (
     <div
       key={itemId}
@@ -31,7 +36,7 @@ const CartItem = ({
         </div>
       </div>
       <div className="col-span-1 px-4 py-2 font-bold text-xl">
-        {`$${item.price.toFixed(2)}`}
+        {updatePriceByCurrency(item.price, exchangeRate, currencyToConvertTo)}
       </div>
       <div className="col-span-1 px-4 py-2">
         <div className="flex items-center">
@@ -59,7 +64,11 @@ const CartItem = ({
         </div>
       </div>
       <div className="col-span-1 px-4 py-2 font-bold text-xl">
-        {`$${(quantity * item.price).toFixed(2)}`}
+        {`$${
+          currencyToConvertTo !== "cad"
+            ? (quantity * item.price * exchangeRate).toFixed(2)
+            : (quantity * item.price).toFixed(2)
+        }`}
       </div>
       <div className="col-span-1">
         <div className="text-2xl">

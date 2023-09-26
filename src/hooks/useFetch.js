@@ -10,12 +10,7 @@ const useFetch = (url, exchangeRate) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(url);
-        // Multiply prices by 2 before setting the data
-        const dataWithDoubledPrices = response.data.map((item) => ({
-          ...item,
-          price: item.price * exchangeRate,
-        }));
-        setData(dataWithDoubledPrices);
+        setData(response.data);
         setLoading(false);
       } catch (err) {
         setError(err); // Capture and set the error

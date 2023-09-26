@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { useFetch } from "./hooks/useFetch";
-import FullProductList from "./container/FullProductList/FullProductList";
+import HomePage from "./container/Home/HomePage";
 import SelectedProductPage from "./container/SelectedProductPage/SelectedProductPage";
 import { Link, Route, Routes } from "react-router-dom";
 import Navbar from "./Navbar";
-import Cart from "./container/Cart/Cart";
+import CartPage from "./container/CartPage/CartPage";
 import useFetchExchangeRate from "./hooks/useFetchExchangeRate";
 import { capitalizeFirstLetter } from "./utils/stringUtils";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 function App() {
   let price = 1;
+  const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
 
   const EXCHANGE_RATE_URL =
     "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/cad.json";
@@ -23,17 +24,16 @@ function App() {
     loading: exchangeRateLoading,
     error: exchangeRateError,
     setCurrencyToConvertTo,
+    currencyToConvertTo,
     baseRate,
-    exchangeRate,
+    // exchangeRate,
   } = useFetchExchangeRate(EXCHANGE_RATE_URL);
+
   const { data, loading, error } = useFetch(PRODUCTS_URL, exchangeRate);
 
   return (
     <>
-      <Navbar
-        setCurrencyToConvertTo={setCurrencyToConvertTo}
-        exchangeRate={exchangeRate}
-      />
+      <Navbar setCurrencyToConvertTo={setCurrencyToConvertTo} />
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -41,10 +41,11 @@ function App() {
           <Route
             path="/"
             element={
-              <FullProductList
+              <HomePage
                 data={data}
                 capitalizeFirstLetter={capitalizeFirstLetter}
-              ></FullProductList>
+                currencyToConvertTo={currencyToConvertTo}
+              />
             }
           ></Route>
           <Route
@@ -53,12 +54,13 @@ function App() {
               <SelectedProductPage
                 data={data}
                 capitalizeFirstLetter={capitalizeFirstLetter}
-              ></SelectedProductPage>
+                currencyToConvertTo={currencyToConvertTo}
+              />
             }
           ></Route>
           <Route
             path="/cart"
-            element={<Cart capitalizeFirstLetter={capitalizeFirstLetter} />}
+            element={<CartPage capitalizeFirstLetter={capitalizeFirstLetter} />}
           ></Route>
         </Routes>
       )}

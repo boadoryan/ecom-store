@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateExchangeRate } from "../store/exchangeRateSlice";
+import {
+  updateExchangeRate,
+  updateCurrencyToConvertTo,
+  updateBaseRate,
+} from "../store/exchangeRateSlice";
 import axios from "axios";
 
 const useFetchExchangeRate = (url) => {
@@ -25,9 +29,8 @@ const useFetchExchangeRate = (url) => {
         const response = await axios.get(url);
         setExchangeRate(response.data.cad[currencyToConvertTo]);
         setBaseRate(response.data.cad.cad);
-        await dispatch(
-          updateExchangeRate(response.data.cad[currencyToConvertTo])
-        );
+        dispatch(updateExchangeRate(response.data.cad[currencyToConvertTo]));
+        dispatch(updateBaseRate(response.data.cad.cad));
         setLoading(false);
       } catch (err) {
         setLoading(false);
@@ -39,6 +42,7 @@ const useFetchExchangeRate = (url) => {
   return {
     exchangeRate,
     setCurrencyToConvertTo,
+    currencyToConvertTo,
     baseRate,
   };
 };

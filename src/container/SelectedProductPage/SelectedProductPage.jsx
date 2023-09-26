@@ -8,7 +8,12 @@ import { addItemToCart } from "../../store/cartSlice";
 import SelectedProductInfo from "./SelectedProductInfo";
 import SelectedProductImage from "./SelectedProductImage";
 
-const SelectedProductPage = ({ data, capitalizeFirstLetter }) => {
+const SelectedProductPage = ({
+  data,
+  capitalizeFirstLetter,
+  exchangeRate,
+  currencyToConvertTo,
+}) => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.items);
@@ -33,7 +38,7 @@ const SelectedProductPage = ({ data, capitalizeFirstLetter }) => {
   return (
     <>
       <ResponsiveContainer>
-        <div className=" mt-20">
+        <div className="my-16">
           <TwoColumnLayout
             leftColumn={<SelectedProductImage data={data} id={id} />}
             rightColumn={
@@ -46,6 +51,8 @@ const SelectedProductPage = ({ data, capitalizeFirstLetter }) => {
                 capitalizeFirstLetter={capitalizeFirstLetter}
                 id={id}
                 quantity={quantity}
+                exchangeRate={exchangeRate}
+                currencyToConvertTo={currencyToConvertTo}
               />
             }
           ></TwoColumnLayout>

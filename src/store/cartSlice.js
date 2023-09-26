@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   items: {},
-  defaultItems: {},
 };
 
 const cartSlice = createSlice({
@@ -34,26 +33,6 @@ const cartSlice = createSlice({
       if (state.items[id].quantity === 0) {
         delete state.items[id];
       }
-    },
-    updateCartPrices: (state, action) => {
-      // Check if defaultItems is empty; if it is, store the original items
-      if (Object.keys(state.defaultItems).length === 0) {
-        state.defaultItems = { ...state.items };
-      } else {
-        state.defaultItems = {};
-      }
-
-      const exchangeRate = action.payload;
-
-      // Reset state.items to its original values from defaultItems
-      // state.items = JSON.parse(JSON.stringify(state.defaultItems));
-
-      // Update item prices based on the exchange rate
-      Object.keys(state.items).forEach((itemId) => {
-        const item = { ...state.items[itemId].item };
-        item.price *= 2;
-        state.items[itemId].item = item;
-      });
     },
   },
 });
