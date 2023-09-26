@@ -16,7 +16,6 @@ const SelectedProductPage = ({
 }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart.items);
   const [quantity, setQuantity] = useState(1);
 
   const decrementQuantity = () => {
@@ -37,8 +36,27 @@ const SelectedProductPage = ({
 
   return (
     <>
-      <ResponsiveContainer>
-        <div className="my-16">
+      <div className="flex flex-col min-h-screen px-2 border">
+        <div className="flex-grow my-12 lg:flex lg:items-center justify-center md:flex md:items-center md:justify-center xl:flex xl:items-center xl:justify-center">
+          <div className="container lg:flex lg:gap-16">
+            <SelectedProductImage data={data} id={id} />
+            <SelectedProductInfo
+              addItemWithQuantity={addItemWithQuantity}
+              decrementQuantity={decrementQuantity}
+              incrementQuantity={incrementQuantity}
+              setQuantity={setQuantity}
+              data={data}
+              capitalizeFirstLetter={capitalizeFirstLetter}
+              id={id}
+              quantity={quantity}
+              exchangeRate={exchangeRate}
+              currencyToConvertTo={currencyToConvertTo}
+            />
+          </div>
+        </div>
+      </div>
+      {/* <ResponsiveContainer> */}
+      {/* <div className="my-16">
           <TwoColumnLayout
             leftColumn={<SelectedProductImage data={data} id={id} />}
             rightColumn={
@@ -56,8 +74,9 @@ const SelectedProductPage = ({
               />
             }
           ></TwoColumnLayout>
-        </div>
-      </ResponsiveContainer>
+        </div> */}
+
+      {/* </ResponsiveContainer> */}
     </>
   );
 };

@@ -8,19 +8,19 @@ const FullProductList = ({
   exchangeRate,
   currencyToConvertTo,
 }) => {
+  const productsByCategory = data.reduce((acc, item) => {
+    const category = capitalizeFirstLetter(item.category);
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(item);
+    return acc;
+  }, {});
 
-    const productsByCategory = data.reduce((acc, item) => {
-      const category = capitalizeFirstLetter(item.category);
-      if (!acc[category]) {
-        acc[category] = [];
-      }
-      acc[category].push(item);
-      return acc;
-    }, {});
-
-  return <>
+  return (
+    <>
       {Object.entries(productsByCategory).map(([category, products]) => (
-        <div key={category} className="my-20">
+        <div key={category} className="my-20 mx-2">
           <h2 className="font-bold text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl">
             {category}
             <span className="text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-2xl font-normal ml-2">{`(${products.length})`}</span>
@@ -41,7 +41,8 @@ const FullProductList = ({
           </div>
         </div>
       ))}
-  </>;
+    </>
+  );
 };
 
 export default FullProductList;
