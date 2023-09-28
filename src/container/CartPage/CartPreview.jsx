@@ -4,8 +4,6 @@ import { useSelector } from "react-redux";
 const CartPreview = () => {
   const cart = useSelector((state) => state.cart.items);
 
-  console.log(cart);
-
   return (
     <div className="absolute bg-white  p-4 right-0 shadow-lg mt-8 w-[36rem]">
       <h2 className="text-lg mb-4 font-semibold">Cart Preview</h2>
@@ -23,6 +21,9 @@ const CartPreview = () => {
             </div>
             <div className="col-span-3  p-2">
               <p className="font-bold overflow-hidden">{item.title}</p>
+              <p className="font-bold overflow-hidden">{`$${item.price.toFixed(
+                2
+              )}`}</p>
             </div>
             <div className="col-span-1  p-2 flex justify-center items-center">
               <p className="font-bold">{`x${quantity}`}</p>

@@ -2,14 +2,20 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useSelector } from "react-redux";
-import CartPreview from "./container/Cart/CartPreview"; // Import the CartPreview component
+import { useSelector, useDispatch } from "react-redux";
+import CartPreview from "./container/CartPage/CartPreview";
+import { updateCartPrices } from "./store/cartSlice"; // Import the action to update cart prices
+import { updateCurrencyToConvertTo } from "./store/exchangeRateSlice";
 
-const Navbar = () => {
+const Navbar = ({ setCurrencyToConvertTo }) => {
   const cart = useSelector((state) => state.cart.items);
-  const [isHovered, setIsHovered] = useState(false); // State to track hover
-
+  const currencyToConvertTo = useSelector(
+    (state) => state.exchangeRate.currencyToConvertTo
+  );
+  const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
+  const [isHovered, setIsHovered] = useState(false);
   const totalQuantity = Object.keys(cart).length;
+  const dispatch = useDispatch();
 
   const handleHover = () => {
     setIsHovered(true);
@@ -19,37 +25,60 @@ const Navbar = () => {
     setIsHovered(false);
   };
 
+  const handleCurrencyChange = (e) => {
+    const newCurrency = e.target.value;
+    setCurrencyToConvertTo(newCurrency);
+    dispatch(updateCurrencyToConvertTo(newCurrency));
+  };
+
   return (
-    <nav className="bg-gray-800 py-6 px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10">
+    <nav className=" py-6 px- sm:px-4 md:px-6 lg:px-8 xl:px-10 shadow-sm">
       <div className="flex flex-col px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
         <div className="flex flex-col sm:flex-row justify-between items-center">
-          <Link to="/" className="text-white font-bold text-xl sm:text-2xl">
-            E-Commerce Store
+          <Link to="/" className="text-black font-bold text-xl sm:text-2xl">
+            Trendiez
           </Link>
-          <ul className="flex space-x-4 mt-4 sm:mt-0">
+          <ul className="flex space-x-6 mt-4 sm:mt-0">
             <li>
-              <Link
+              {/* <Link
                 to="/"
-                className="text-white hover:text-gray-300 transition-colors"
+                className="text-black hover:text-gray-300 transition-colors"
               >
                 Home
-              </Link>
+              </Link> */}
             </li>
-            <li>
+            {/* <li>
               <Link
                 to="/about"
-                className="text-white hover:text-gray-300 transition-colors"
+                className="text-black hover:text-gray-300 transition-colors"
               >
                 About
               </Link>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <Link
                 to="/contact"
-                className="text-white hover:text-gray-300 transition-colors"
+                className="text-black hover:text-gray-300 transition-colors"
               >
                 Contact
               </Link>
+            </li> */}
+            <li>
+              <label htmlFor="currency" className="">
+                Currency:
+              </label>
+              <select
+                onChange={(e) => handleCurrencyChange(e)}
+                name="currency"
+                id="id"
+                className="bg-white px-2 font-bold"
+                defaultValue={currencyToConvertTo}
+              >
+                <option value="cad">CAD</option>
+                <option value="usd">USD</option>
+                <option value="gbp">GBP</option>
+                <option value="eur">EUR</option>
+              </select>
             </li>
             <li
               onMouseEnter={handleHover}
@@ -58,12 +87,12 @@ const Navbar = () => {
             >
               <Link
                 to="/cart"
-                className="text-white hover:text-gray-300 transition-colors"
+                className="text-black hover:text-gray-300 transition-colors"
               >
                 <span className="mr-2">Cart</span>{" "}
                 <FontAwesomeIcon icon={faCartShopping} />
                 {totalQuantity > 0 && (
-                  <span className="bg-red-500 text-white rounded-full h-5 w-5 absolute bottom-5 left-14 flex items-center justify-center text-xs">
+                  <span className="bg-[#e2ebf8] text-black rounded-full h-5 w-5 absolute bottom-5 left-14 flex items-center justify-center text-xs">
                     {totalQuantity}
                   </span>
                 )}

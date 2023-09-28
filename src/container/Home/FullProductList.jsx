@@ -1,10 +1,13 @@
 import React from "react";
 import ProductListItem from "./ProductListItem";
 import { Link } from "react-router-dom";
-import HeroBanner from "./HeroBanner";
-import ResponsiveContainer from "../../components/ResponsiveContainer";
 
-const FullProductList = ({ data, capitalizeFirstLetter }) => {
+const FullProductList = ({
+  data,
+  capitalizeFirstLetter,
+  exchangeRate,
+  currencyToConvertTo,
+}) => {
   const productsByCategory = data.reduce((acc, item) => {
     const category = capitalizeFirstLetter(item.category);
     if (!acc[category]) {
@@ -14,18 +17,10 @@ const FullProductList = ({ data, capitalizeFirstLetter }) => {
     return acc;
   }, {});
 
-  // const addItemToCart = (id) => {
-  //   console.log(data[id]);
-  // };
-
   return (
-    <ResponsiveContainer>
-      <HeroBanner
-        data={data}
-        capitalizeFirstLetter={capitalizeFirstLetter}
-      ></HeroBanner>
+    <>
       {Object.entries(productsByCategory).map(([category, products]) => (
-        <div key={category} className="my-20">
+        <div key={category} className="my-20 mx-2">
           <h2 className="font-bold text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl">
             {category}
             <span className="text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-2xl font-normal ml-2">{`(${products.length})`}</span>
@@ -37,7 +32,8 @@ const FullProductList = ({ data, capitalizeFirstLetter }) => {
                   <ProductListItem
                     item={product}
                     capitalizeFirstLetter={capitalizeFirstLetter}
-                    // addItemToCart={addItemToCart}
+                    exchangeRate={exchangeRate}
+                    currencyToConvertTo={currencyToConvertTo}
                   ></ProductListItem>
                 </Link>
               </div>
@@ -45,7 +41,7 @@ const FullProductList = ({ data, capitalizeFirstLetter }) => {
           </div>
         </div>
       ))}
-    </ResponsiveContainer>
+    </>
   );
 };
 

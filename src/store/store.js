@@ -1,44 +1,38 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
+import cartSliceReducer from "./cartSlice"; // Import the reducer, not the actions
+import exchangeRateReducer from "./exchangeRateSlice";
+import storage from "redux-persist/lib/storage";
+import {
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import { combineReducers } from "@reduxjs/toolkit";
 
-const initialState = { items: {} };
+const persistConfig = {
+  key: "root",
+  version: 1,
+  storage,
+};
 
-const cartSlice = createSlice({
-  name: "cart",
-  initialState,
-  reducers: {
-    // Add an item to the cart.
-    addItemToCart: (state, action) => {
-      const { item, quantity } = action.payload; // Destructure the payload object
-      const existingItem = state.items[item.id];
-      existingItem
-        ? (existingItem.quantity += quantity)
-        : (state.items[item.id] = { item, quantity });
-    },
-
-    // Remove an item from the cart.
-    removeItemFromCart: (state, action) => {
-      const itemIdToRemove = action.payload;
-      delete state.items[itemIdToRemove];
-    },
-
-    // Update an item's quantity in the cart.
-    updateItemQuantity: (state, action) => {
-      const { id, quantity } = action.payload;
-      if (state.items[id]) {
-        state.items[id].quantity = Math.max(quantity, 0);
-      }
-      if (state.items[id].quantity === 0) {
-        delete state.items[id];
-      }
-    },
-  },
+const reducer = combineReducers({
+  cart: cartSliceReducer,
+  exchangeRate: exchangeRateReducer,
 });
 
-export const { addItemToCart, removeItemFromCart, updateItemQuantity } =
-  cartSlice.actions;
-
-export const store = configureStore({
-  reducer: {
-    cart: cartSlice.reducer,
-  },
+const persistedReducer = persistReducer(persistConfig, reducer);
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
+
+export { store };

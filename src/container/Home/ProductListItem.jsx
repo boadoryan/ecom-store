@@ -1,8 +1,15 @@
 import React from "react";
+import { updatePriceByCurrency } from "../../utils/stringUtils";
 
-const ProductListItem = ({ item, capitalizeFirstLetter, addItemToCart }) => {
+import { useSelector } from "react-redux";
+
+const ProductListItem = ({ item, capitalizeFirstLetter }) => {
+  const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
+  const currencyToConvertTo = useSelector(
+    (state) => state.exchangeRate.currencyToConvertTo
+  );
   return (
-    <div className="flex flex-col justify-center py-8 px-4 border rounded bg-white text-center shadow-md hover:scale-105 transition-transform duration-300 ease-in-out">
+    <div className="flex flex-col justify-center py-8 px-4 border border-black rounded bg-white text-center shadow-md hover:scale-105 transition-transform duration-300 ease-in-out">
       <div className="w-full h-48 sm:h-60 md:h-42 lg:h-48 xl:h-48 mb-4 overflow-hidden">
         <img className="h-full w-full object-contain" src={item.image} alt="" />
       </div>
@@ -14,7 +21,7 @@ const ProductListItem = ({ item, capitalizeFirstLetter, addItemToCart }) => {
           {item.title}
         </p>
         <p className="font-bold text-xl sm:text-2xl md:text-xl lg:text-xl xl:text-xl">
-          {`$${item.price.toFixed(2)}`}
+          {updatePriceByCurrency(item.price, exchangeRate, currencyToConvertTo)}
         </p>
       </div>
     </div>
