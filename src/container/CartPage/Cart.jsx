@@ -17,14 +17,16 @@ const Cart = ({ capitalizeFirstLetter }) => {
           </h1>
           <div className="max-w-full overflow-x-auto">
             <div className="grid grid-cols-7 gap-4">
-              <div className="col-span-1 px-4 py-2 flex justify-center">
+              <div className="col-span-1 px-4 py-2 flex justify-center hidden md:block">
                 <p>Item</p>
               </div>
-              <div className="col-span-2 px-4 py-2">Name</div>
-              <div className="col-span-1 px-4 py-2">Price</div>
-              <div className="col-span-1 px-4 py-2">Quantity</div>
-              <div className="col-span-1 px-4 py-2">Total</div>
-              <div className="col-span-1 px-4 py-2 flex justify-center">
+              <div className="col-span-2 px-4 py-2 hidden md:block">Name</div>
+              <div className="col-span-1 px-4 py-2 hidden md:block">Price</div>
+              <div className="col-span-1 px-4 py-2 hidden md:block">
+                Quantity
+              </div>
+              <div className="col-span-1 px-4 py-2 hidden md:block">Total</div>
+              <div className="col-span-1 px-4 py-2 hidden md:block flex justify-center">
                 <p>Action</p>
               </div>
             </div>

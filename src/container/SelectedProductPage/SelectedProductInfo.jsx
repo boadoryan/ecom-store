@@ -20,7 +20,7 @@ const SelectedProductInfo = ({
   const currentProductSelected = data[id - 1];
 
   return (
-    <div className="px-4 py-8 md:p-12 rounded bg-[#e2ebf8] h-full flex flex-col border border-black">
+    <div className="p-8 md:p-12 rounded bg-[#e2ebf8] h-full flex flex-col border border-black">
       {/* Category Name */}
       <div className="md:text-start">
         {capitalizeFirstLetter(currentProductSelected.category)}

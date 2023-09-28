@@ -16,13 +16,12 @@ export function validateCustomerInformationForm(name, value) {
   // }
 
   if (name === "email") {
-    const emailRegex =
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const emailRegex = /^[A-Za-z0-9+_.-]+@(.+)$/;
 
-    if (emailRegex.text(value)) {
+    if (emailRegex.test(value)) {
       return { isValid: true, errorText: "" };
     } else {
-      return { isValid: false, errorText: "Invalid phone number." };
+      return { isValid: false, errorText: "Invalid email." };
     }
   }
 

@@ -36,10 +36,12 @@ const SelectedProductPage = ({
 
   return (
     <>
-      <div className="flex flex-col min-h-screen px-2 border">
-        <div className="flex-grow my-12 lg:flex lg:items-center justify-center md:flex md:items-center md:justify-center xl:flex xl:items-center xl:justify-center">
-          <div className="container lg:flex lg:gap-16">
+      <ResponsiveContainer>
+        <div className=" px-4 md:px-8 py-20 lg:grid grid-cols-2 lg:p-4">
+          <div className="">
             <SelectedProductImage data={data} id={id} />
+          </div>
+          <div className="">
             <SelectedProductInfo
               addItemWithQuantity={addItemWithQuantity}
               decrementQuantity={decrementQuantity}
@@ -54,29 +56,7 @@ const SelectedProductPage = ({
             />
           </div>
         </div>
-      </div>
-      {/* <ResponsiveContainer> */}
-      {/* <div className="my-16">
-          <TwoColumnLayout
-            leftColumn={<SelectedProductImage data={data} id={id} />}
-            rightColumn={
-              <SelectedProductInfo
-                addItemWithQuantity={addItemWithQuantity}
-                decrementQuantity={decrementQuantity}
-                incrementQuantity={incrementQuantity}
-                setQuantity={setQuantity}
-                data={data}
-                capitalizeFirstLetter={capitalizeFirstLetter}
-                id={id}
-                quantity={quantity}
-                exchangeRate={exchangeRate}
-                currencyToConvertTo={currencyToConvertTo}
-              />
-            }
-          ></TwoColumnLayout>
-        </div> */}
-
-      {/* </ResponsiveContainer> */}
+      </ResponsiveContainer>
     </>
   );
 };

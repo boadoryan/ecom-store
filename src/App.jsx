@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from "react";
 import "./App.css";
 import { useFetch } from "./hooks/useFetch";
 import HomePage from "./container/Home/HomePage";
 import SelectedProductPage from "./container/SelectedProductPage/SelectedProductPage";
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./Navbar";
 import CartPage from "./container/CartPage/CartPage";
 import useFetchExchangeRate from "./hooks/useFetchExchangeRate";
 import { capitalizeFirstLetter } from "./utils/stringUtils";
-import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function App() {
-  let price = 1;
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
 
   const EXCHANGE_RATE_URL =
@@ -26,7 +23,6 @@ function App() {
     setCurrencyToConvertTo,
     currencyToConvertTo,
     baseRate,
-    // exchangeRate,
   } = useFetchExchangeRate(EXCHANGE_RATE_URL);
 
   const { data, loading, error } = useFetch(PRODUCTS_URL, exchangeRate);

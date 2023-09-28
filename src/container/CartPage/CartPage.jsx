@@ -42,6 +42,7 @@ const CartPage = ({ capitalizeFirstLetter }) => {
     <PaymentForm formData={formData} setFormData={setFormData} />,
   ]);
 
+
   const tax = 0.07;
   const cart = useSelector((state) => state.cart.items);
   const total = Object.values(cart).reduce((accumulator, currentItem) => {
@@ -70,11 +71,11 @@ const CartPage = ({ capitalizeFirstLetter }) => {
   };
   return (
     <ResponsiveContainer>
-      <div className="flex gap-12 pb-48">
+      <div className="flex flex-col md:mx-20 my-12 md:flex-col lg:flex-col xl:flex-row gap-12 pb-48">
         {showOverview ? (
           <OrderOverview formData={formData} total={total} tax={tax} />
         ) : (
-          <div className="w-3/5 flex flex-col">
+          <div className=" md:w-full lg:w-full xl:w-3/5 flex flex-col">
             <form action="" onSubmit={handleSubmit}>
               <CartPageHeader isFirstStep={isFirstStep} back={back} />
               {step}
@@ -107,7 +108,7 @@ const CartPage = ({ capitalizeFirstLetter }) => {
           </div>
         )}
         {!showOverview ? (
-          <div className="w-2/5">
+          <div className="md:w-full lg:w-full xl:w-2/5">
             <OrderSummary
               setShowCheckout={setShowCheckout}
               next={next}

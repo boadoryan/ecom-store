@@ -17,7 +17,6 @@ const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  // whitelist: ["exchangeRate", "currencyToConvertTo"],
 };
 
 const reducer = combineReducers({

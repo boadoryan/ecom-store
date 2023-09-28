@@ -6,7 +6,7 @@ const PaymentForm = ({ formData, setFormData }) => {
     <>
       <div className="border rounded p-8 bg-[#f4f4f4]">
         <FormInput
-          labelName={"Card Number"}
+          labelName={"Card Number  (For testing: 4111 1111 1111 1111)"}
           inputType={"text"}
           placeHolder={"Card Number (Visa, Mastercard, AMEX)"}
           formData={formData}

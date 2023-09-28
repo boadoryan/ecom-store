@@ -13,6 +13,7 @@ const useFetchExchangeRate = (url) => {
   const [error, setError] = useState(null);
   const [exchangeRate, setExchangeRate] = useState(null);
   const [baseRate, setBaseRate] = useState(null);
+  const [currencySymbol, setCurrencySymbol] = useState(null);
   const dispatch = useDispatch();
 
   // Mapping of currency symbols
@@ -27,8 +28,8 @@ const useFetchExchangeRate = (url) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(url);
-        setExchangeRate(response.data.cad[currencyToConvertTo]);
-        setBaseRate(response.data.cad.cad);
+        // setExchangeRate(response.data.cad[currencyToConvertTo]);
+        // setBaseRate(response.data.cad.cad);
         dispatch(updateExchangeRate(response.data.cad[currencyToConvertTo]));
         dispatch(updateBaseRate(response.data.cad.cad));
         setLoading(false);
