@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import { updatePriceByCurrency } from "../../utils/stringUtils";
 
 const Overview = ({ next, total, tax }) => {
+  const cart = useSelector((state) => state.cart.items);
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
   const currencyToConvertTo = useSelector(
     (state) => state.exchangeRate.currencyToConvertTo
   );
+
   return (
     <>
       <div>
@@ -54,12 +56,14 @@ const Overview = ({ next, total, tax }) => {
               </p>
             </div>
             <div>
-              <Button
-                text={"Checkout"}
-                isBordered={true}
-                hoverColor={"#e6ede8"}
-                handleOnClick={next}
-              />
+              {Object.keys(cart).length > 0 ? (
+                <Button
+                  text={"Checkout"}
+                  isBordered={true}
+                  hoverColor={"#e6ede8"}
+                  handleOnClick={next}
+                />
+              ) : null}
               <div
                 className="w-full rounded px-2 py-4 border text-center bg-white
               my-4"

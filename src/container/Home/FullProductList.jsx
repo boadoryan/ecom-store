@@ -21,7 +21,7 @@ const FullProductList = ({ data, exchangeRate, currencyToConvertTo }) => {
             {category}
             <span className="text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-2xl font-normal ml-2">{`(${products.length})`}</span>
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 my-4 sm:my-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 my-4 sm:my-8">
             {products.map((product) => (
               <div key={product.id}>
                 <Link to={`/product/${product.id}`}>
