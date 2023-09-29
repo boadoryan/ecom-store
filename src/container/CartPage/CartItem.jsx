@@ -3,15 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { removeItemFromCart } from "../../store/cartSlice";
-import Button from "../../components/Button";
 import { updatePriceByCurrency } from "../../utils/stringUtils";
-const CartItem = ({
-  itemId,
-  item,
-  capitalizeFirstLetter,
-  quantity,
-  handleQuantityChange,
-}) => {
+import { capitalizeFirstLetter } from "../../utils/stringUtils";
+import Button from "../../components/Button";
+
+const CartItem = ({ itemId, item, quantity, handleQuantityChange }) => {
   const dispatch = useDispatch();
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
   const currencyToConvertTo = useSelector(

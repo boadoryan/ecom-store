@@ -3,17 +3,10 @@ import { Link } from "react-router-dom";
 import { capitalizeFirstLetter } from "../../utils/stringUtils";
 
 const InfoBanner = ({ data }) => {
-  console.log(data);
-
-  // Assuming 'data' is an array of objects with 'title' properties
   const filteredData = data.filter((item) => {
-    // Split the title into words and count them
     const words = item.title.split(" ");
-    return words.length <= 7; // Filter items with titles having 5 or more words
+    return words.length <= 7;
   });
-
-  console.log(filteredData);
-
   const randomNumIndex = Math.floor(Math.random() * filteredData.length);
   const randomProduct = filteredData[randomNumIndex];
   return (
@@ -31,12 +24,11 @@ const InfoBanner = ({ data }) => {
             />
           </div>
         </div>
-        {/* Left Column (40%) */}
         <div className=" px-4 py-8 md:flex flex-col justify-center lg:px-8 border border-black rounded col-span-2 bg-[#e2ebf8]">
-          <div className="">
+          <div className="md:text-xl">
             {capitalizeFirstLetter(randomProduct.category)}
           </div>
-          <div className=" my-4 text-3xl font-bold md:text-3xl md:my-8 lg:text-5xl w-4/5">
+          <div className=" my-4 text-3xl font-bold md:text-3xl md:my-4 lg:text-5xl w-4/5">
             {randomProduct.title
               .split(" ") // Split the title into an array of words
               .slice(0, 5) // Select the first 5 words
@@ -48,7 +40,6 @@ const InfoBanner = ({ data }) => {
             </button>
           </Link>
         </div>
-        {/* </div> */}
       </div>
     </>
   );

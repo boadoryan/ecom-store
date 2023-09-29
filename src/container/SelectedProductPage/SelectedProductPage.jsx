@@ -1,8 +1,7 @@
 import React from "react";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
-import TwoColumnLayout from "../../components/TwoColumnLayout";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { addItemToCart } from "../../store/cartSlice";
 import SelectedProductInfo from "./SelectedProductInfo";

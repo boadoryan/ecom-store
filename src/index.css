@@ -30,5 +30,67 @@ body {
   background-clip: text; /* Standard CSS property */
   -webkit-background-clip: text; /* WebKit-specific property */
   color: transparent; /* Standard CSS property */
-  -webkit-text-fill-color: transparent; /* WebKit-specific property */
+  -webkit-text-fill-color: transparent; /* WebKi
+  
+  t-specific property */
 }
+
+.homepage-category-item {
+  height: 32rem;
+  background: url(assets/jewelry_category.jpg) no-repeat fixed center;
+  box-shadow: inset 0px -285px 60px rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+}
+
+/* Group 37 */
+
+/* image */
+/* position: absolute;
+width: 971px;
+height: 1295px;
+left: 173px;
+top: 355px; */
+
+/* clothing_category 2 */
+
+/* position: absolute;
+width: 971px;
+height: 1295px;
+left: 173px;
+top: 355px;
+
+background: url(clothing_category.jpg);
+box-shadow: inset 0px -285px 60px rgba(0, 0, 0, 0.6);
+border-radius: 20px; */
+
+/* CLOTHING */
+
+/* position: absolute;
+width: 524px;
+height: 121px;
+left: 228px;
+top: 1441px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 100px;
+line-height: 121px;
+
+color: #FFFFFF; */
+
+/* Men’s and Women’s */
+
+/* position: absolute;
+width: 404px;
+height: 51px;
+left: 228px;
+top: 1391px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 42px;
+line-height: 51px;
+
+color: #FFFFFF; */

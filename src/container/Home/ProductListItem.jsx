@@ -1,9 +1,12 @@
 import React from "react";
-import { updatePriceByCurrency } from "../../utils/stringUtils";
+import {
+  updatePriceByCurrency,
+  capitalizeFirstLetter,
+} from "../../utils/stringUtils";
 
 import { useSelector } from "react-redux";
 
-const ProductListItem = ({ item, capitalizeFirstLetter }) => {
+const ProductListItem = ({ item }) => {
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
   const currencyToConvertTo = useSelector(
     (state) => state.exchangeRate.currencyToConvertTo

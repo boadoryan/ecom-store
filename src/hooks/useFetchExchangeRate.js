@@ -1,23 +1,17 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  updateExchangeRate,
-  updateCurrencyToConvertTo,
-  updateBaseRate,
-} from "../store/exchangeRateSlice";
+import { useDispatch } from "react-redux";
+import { updateExchangeRate, updateBaseRate } from "../store/exchangeRateSlice";
 import axios from "axios";
 
 const useFetchExchangeRate = (url) => {
   const [currencyToConvertTo, setCurrencyToConvertTo] = useState("cad");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [exchangeRate, setExchangeRate] = useState(null);
-  const [baseRate, setBaseRate] = useState(null);
-  const [currencySymbol, setCurrencySymbol] = useState(null);
+  const [currencySymbol, setCurrencySymbol] = useState(null); // To be implemented.
   const dispatch = useDispatch();
 
   // Mapping of currency symbols
-  const currencySymbols = {
+  const currencySymbols = { // To be implemented.
     usd: "$",
     cad: "$",
     gbp: "£",
@@ -28,23 +22,22 @@ const useFetchExchangeRate = (url) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(url);
-        // setExchangeRate(response.data.cad[currencyToConvertTo]);
-        // setBaseRate(response.data.cad.cad);
         dispatch(updateExchangeRate(response.data.cad[currencyToConvertTo]));
         dispatch(updateBaseRate(response.data.cad.cad));
         setLoading(false);
       } catch (err) {
         setLoading(false);
+        setError(err);
       }
     };
     fetchData();
   }, [currencyToConvertTo]);
 
   return {
-    exchangeRate,
+    error,
+    loading,
     setCurrencyToConvertTo,
     currencyToConvertTo,
-    baseRate,
   };
 };
 

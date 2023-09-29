@@ -1,6 +1,7 @@
 import { useState } from "react";
-import ResponsiveContainer from "../../components/ResponsiveContainer";
+import { useSelector } from "react-redux";
 import { useMultistepForm } from "../../hooks/useMultistepForm";
+import ResponsiveContainer from "../../components/ResponsiveContainer";
 import CartPageHeader from "./CartPageHeader";
 import Cart from "./Cart";
 import CustomerInformationForm from "./CustomerInformationForm";
@@ -8,7 +9,6 @@ import PaymentForm from "./PaymentForm";
 import OrderSummary from "./OrderSummary";
 import OrderOverview from "../Overview/OrderOverview";
 import ErrorModal from "../../ErrorModal";
-import { useSelector } from "react-redux";
 
 const CartPage = ({ capitalizeFirstLetter }) => {
   const [showCheckout, setShowCheckout] = useState(false);
@@ -37,11 +37,10 @@ const CartPage = ({ capitalizeFirstLetter }) => {
     isLastStep,
     isFirstStep,
   } = useMultistepForm([
-    <Cart capitalizeFirstLetter={capitalizeFirstLetter} />,
+    <Cart />,
     <CustomerInformationForm formData={formData} setFormData={setFormData} />,
     <PaymentForm formData={formData} setFormData={setFormData} />,
   ]);
-
 
   const tax = 0.07;
   const cart = useSelector((state) => state.cart.items);

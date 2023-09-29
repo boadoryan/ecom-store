@@ -4,18 +4,14 @@ import ResponsiveContainer from "../../components/ResponsiveContainer";
 import FullProductList from "./FullProductList";
 import InfoBanner from "./InfoBanner";
 import CategoriesBanner from "./CategoriesBanner";
-import { capitalizeFirstLetter } from "../../utils/stringUtils";
 
-const HomePage = ({ data, capitalizeFirstLetter }) => {
+const HomePage = ({ data }) => {
   return (
     <ResponsiveContainer>
-      <HeroBanner data={data} capitalizeFirstLetter={capitalizeFirstLetter} />
+      <HeroBanner />
       <CategoriesBanner data={data} />
       <InfoBanner data={data} />
-      <FullProductList
-        data={data}
-        capitalizeFirstLetter={capitalizeFirstLetter}
-      />
+      <FullProductList data={data} />
     </ResponsiveContainer>
   );
 };

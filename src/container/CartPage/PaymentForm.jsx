@@ -6,7 +6,7 @@ const PaymentForm = ({ formData, setFormData }) => {
     <>
       <div className="border rounded p-8 bg-[#f4f4f4]">
         <FormInput
-          labelName={"Card Number  (For testing: 4111 1111 1111 1111)"}
+          labelName={"Card Number (For testing: 4111 1111 1111 1111)"}
           inputType={"text"}
           placeHolder={"Card Number (Visa, Mastercard, AMEX)"}
           formData={formData}
@@ -23,7 +23,7 @@ const PaymentForm = ({ formData, setFormData }) => {
         />
         <div className="grid grid-cols-2 gap-4">
           <FormInput
-            labelName={"Expiration Date (MM/YY) "}
+            labelName={"Expiration Date (MM/YY)"}
             inputType={"text"}
             placeHolder={"Expiration Date (ex: 09/25)"}
             formData={formData}
