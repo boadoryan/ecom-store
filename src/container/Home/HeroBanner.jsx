@@ -15,7 +15,7 @@ const HeroBanner = () => {
         <div className="h-full md:block md:p-8 order-1 flex justify-center align-center">
           <img
             className=" h-[10rem] sm:h-[14rem] md:h-[20rem] lg:h-[24rem] mb-4 object-contain"
-            src="../../../public/assets/undraw_web_shopping_re_owap.svg"
+            src="/public/assets/undraw_web_shopping_re_owap.svg"
             alt=""
           />
         </div>

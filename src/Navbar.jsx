@@ -12,18 +12,18 @@ const Navbar = ({ setCurrencyToConvertTo }) => {
   const currencyToConvertTo = useSelector(
     (state) => state.exchangeRate.currencyToConvertTo
   );
-  const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
-  const [isHovered, setIsHovered] = useState(false);
+  // const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
+  // const [isHovered, setIsHovered] = useState(false);
   const totalQuantity = Object.keys(cart).length;
   const dispatch = useDispatch();
 
-  const handleHover = () => {
-    setIsHovered(true);
-  };
+  // const handleHover = () => {
+  //   setIsHovered(true);
+  // };
 
-  const handleLeave = () => {
-    setIsHovered(false);
-  };
+  // const handleLeave = () => {
+  //   setIsHovered(false);
+  // };
 
   const handleCurrencyChange = (e) => {
     const newCurrency = e.target.value;
@@ -80,11 +80,7 @@ const Navbar = ({ setCurrencyToConvertTo }) => {
                 <option value="eur">EUR</option>
               </select>
             </li>
-            <li
-              onMouseEnter={handleHover}
-              onMouseLeave={handleLeave}
-              className="relative"
-            >
+            <li>
               <Link
                 to="/cart"
                 className="text-black hover:text-gray-300 transition-colors"
@@ -97,7 +93,6 @@ const Navbar = ({ setCurrencyToConvertTo }) => {
                   </span>
                 )}
               </Link>
-              {isHovered && <CartPreview />}
             </li>
           </ul>
         </div>
