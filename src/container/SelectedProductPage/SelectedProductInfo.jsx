@@ -2,10 +2,10 @@ import React from "react";
 import Button from "../../components/Button";
 import { useSelector } from "react-redux";
 import { updatePriceByCurrency } from "../../utils/stringUtils";
+import { capitalizeFirstLetter } from "../../utils/stringUtils";
 
 const SelectedProductInfo = ({
   data,
-  capitalizeFirstLetter,
   id,
   decrementQuantity,
   incrementQuantity,
