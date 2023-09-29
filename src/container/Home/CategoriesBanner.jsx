@@ -1,4 +1,5 @@
 import React from "react";
+import { useRef } from "react";
 import {
   faShirt,
   faComputer,
@@ -8,62 +9,54 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CategoriesBanner = ({ data }) => {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <>
       <h2 className="font-bold text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl lg:mb-4 mx-2 mb-4">
         Find the best deals on:
       </h2>
       <div className="md:mb-20 mb-8 mx-2">
-        <div className="grid gap-4 grid-cols-1 md:grid md:grid-cols-3 lg:grid">
+        <div className="grid gap-6 grid-cols-1 md:grid md:grid-cols-2 lg:grid-cols-4">
           {/* First category */}
-          <div className="flex flex-col justify-center align-center items-center bg-black">
-            <div className="h-[440px] w-full md:block homepage-category-item rounded">
-              <img
-                className="h-full w-full object-cover rounded shadow-img"
-                src="../../../public/assets/electronics_category.jpg"
-                alt=""
-              />
-              <p className="homepage-category-item-subtitle text-2xl text-white font-bold">
-                The latest in
-              </p>
-              <p className="homepage-category-item-title text-6xl text-white font-bold">
+          <a onClick={() => scrollToSection("electronics-homepage-section")}>
+            <div className="flex flex-col justify-end h-[300px] p-6 bg-[#FFCBA4] border-2 border-black rounded shadow-md hover:scale-105 transition-transform duration-300 ease-in-out">
+              <p className="text-xl text-black mb-2">Newest</p>
+              <p className="text-5xl md:text-4xl text-black font-bold">
                 Electronics
               </p>
             </div>
-          </div>
-          <div className="flex flex-col justify-center align-center items-center">
-            <div className="h-[440px] w-full md:block homepage-category-item rounded">
-              <img
-                className="h-full w-full object-cover rounded shadow-img"
-                src="../../../public/assets/clothing_category.jpg"
-                alt=""
-              />
-              <p className="homepage-category-item-subtitle text-2xl text-white font-bold">
-                Men's and women's
-              </p>
-              <p className="homepage-category-item-title text-6xl text-white font-bold">
+          </a>
+          <a
+            onClick={() => scrollToSection("womens-clothing-homepage-section")}
+          >
+            <div className=" flex flex-col justify-end h-[300px] p-6 bg-[#FFF3B0] border-2 border-black rounded shadow-md hover:scale-105 transition-transform duration-300 ease-in-out">
+              <p className="text-xl text-black mb-2">Women's </p>
+              <p className=" text-5xl md:text-4xl text-black font-bold">
                 Clothing
               </p>
             </div>
-          </div>
-          <div className="flex flex-col justify-center align-center items-center">
-            <div className="h-[440px] w-full md:block homepage-category-item rounded">
-              <img
-                className="h-full w-full object-cover rounded shadow-img object-right-bottom"
-                src="../../../public/assets/jewelry_category.jpg"
-                alt=""
-              />
-              <p className="homepage-category-item-subtitle text-2xl text-white font-bold">
-                The finest artisan
-              </p>
-              <p className="homepage-category-item-title text-6xl text-white font-bold">
+          </a>
+          <a onClick={() => scrollToSection("jewelery-homepage-section")}>
+            <div className=" flex flex-col justify-end h-[300px] p-6 bg-[#AEC6CF] border-2 border-black rounded shadow-md hover:scale-105 transition-transform duration-300 ease-in-out">
+              <p className="text-xl text-black mb-2">Artisan</p>
+              <p className=" text-5xl md:text-4xl text-black font-bold">
                 Jewelry
               </p>
             </div>
-          </div>
-
-          {/* Second category */}
-          {/* ... (similar structure for other categories) */}
+          </a>
+          <a onClick={() => scrollToSection("mens-clothing-homepage-section")}>
+            <div className=" flex flex-col justify-end h-[300px] p-6 bg-[#A1EFD3] border-2 border-black rounded shadow-md hover:scale-105 transition-transform duration-300 ease-in-out">
+              <p className="text-xl text-black mb-2">Men's</p>
+              <p className=" text-5xl md:text-4xl text-black font-bold">
+                Clothing
+              </p>
+            </div>
+          </a>
         </div>
       </div>
     </>

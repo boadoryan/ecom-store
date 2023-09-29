@@ -4,6 +4,7 @@ const initialState = {
   exchangeRate: 1,
   currencyToConvertTo: "",
   baseRate: 1,
+  currencySymbol: "$",
 };
 
 const exchangeRateSlice = createSlice({
@@ -19,6 +20,10 @@ const exchangeRateSlice = createSlice({
     },
     updateBaseRate: (state, action) => {
       state.baseRate = action.payload;
+    },
+    updateCurrencySymbol: (state, action) => {
+      if (action.payload === "$") return;
+      state.currencySymbol = action.payload;
     },
   },
 });

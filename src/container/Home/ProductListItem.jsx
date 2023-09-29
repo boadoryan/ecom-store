@@ -12,7 +12,7 @@ const ProductListItem = ({ item }) => {
     (state) => state.exchangeRate.currencyToConvertTo
   );
   return (
-    <div className="flex flex-col justify-center py-8 px-4 border border-black rounded bg-white text-center shadow-md hover:scale-105 transition-transform duration-300 ease-in-out">
+    <div className="flex flex-col justify-center py-8 px-4 border-2 border-black rounded bg-white text-center shadow-md hover:scale-105 transition-transform duration-300 ease-in-out">
       <div className="w-full h-48 sm:h-60 md:h-42 lg:h-48 xl:h-48 mb-4 overflow-hidden">
         <img className="h-full w-full object-contain" src={item.image} alt="" />
       </div>

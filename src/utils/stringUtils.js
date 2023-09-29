@@ -9,6 +9,18 @@ export const capitalizeFirstLetter = (string) => {
   return words.join(" ");
 };
 
+export const convertFirstLetterToLowerWithHyphens = (str) => {
+  const trimmedStr = str.trim().toLowerCase();
+
+  // Remove the apostrophe
+  const withoutApostrophe = trimmedStr.replace(/'/g, "");
+
+  // Replace spaces with hyphens
+  const newStr = withoutApostrophe.replace(/\s+/g, "-");
+
+  return newStr;
+};
+
 export const updatePriceByCurrency = (
   price,
   exchangeRate,

@@ -15,7 +15,7 @@ const InfoBanner = ({ data }) => {
         Featured Product
       </h2>
       <div className="md:grid md:grid-cols-5 gap-4  lg:grid  lg:grid-cols-5 lg:gap-4 mx-2">
-        <div className="col-span-3  border border-black rounded flex justify-center items-center py-4 bg-white ">
+        <div className="col-span-3  border-2 border-black rounded flex justify-center items-center py-4 bg-white ">
           <div className="">
             <img
               className=" h-[20rem] md:h-[16rem] lg:h-[25rem]  lg:p-8 object-contain"
@@ -24,7 +24,7 @@ const InfoBanner = ({ data }) => {
             />
           </div>
         </div>
-        <div className=" px-4 py-8 md:flex flex-col justify-center lg:px-8 border border-black rounded col-span-2 bg-[#e2ebf8]">
+        <div className=" px-4 py-8 md:flex flex-col justify-center lg:px-8 border-2 border-black rounded col-span-2 bg-[#e2ebf8]">
           <div className="md:text-xl">
             {capitalizeFirstLetter(randomProduct.category)}
           </div>

@@ -20,7 +20,7 @@ const SelectedProductInfo = ({
   const currentProductSelected = data[id - 1];
 
   return (
-    <div className="p-8 md:p-12 rounded bg-[#e2ebf8] h-full flex flex-col border border-black">
+    <div className="p-8 md:p-12 rounded bg-[#e2ebf8] h-full flex flex-col border-2 border-black">
       {/* Category Name */}
       <div className="md:text-start">
         {capitalizeFirstLetter(currentProductSelected.category)}
@@ -32,8 +32,8 @@ const SelectedProductInfo = ({
       </div>
 
       {/* Price */}
-      <div className="md:text-start my-6">
-        <span className="text-4xl font-bold">
+      <div className="md:text-start my-8">
+        <span className="text-5xl font-bold">
           {updatePriceByCurrency(
             currentProductSelected.price,
             exchangeRate,
@@ -49,7 +49,7 @@ const SelectedProductInfo = ({
       </div>
 
       {/* Quantity */}
-      <div className="text-center md:text-start flex flex-col items-center my-4 md:items-start">
+      <div className="text-center md:text-start flex flex-col items-center my-4 md:items-start ">
         <div className="font-bold md:text-xl my-4">Quantity:</div>
         <div className="flex items-center">
           <button onClick={decrementQuantity} className="rounded p-2 bg-white">
@@ -57,7 +57,7 @@ const SelectedProductInfo = ({
           </button>
           <input
             type="number"
-            className="appearance-none bg-white text-center py-3 px-12 mx-2 rounded leading-tight focus:outline-none custom-no-spin"
+            className="appearance-none bg-white text-center py-3 px-6 mx-2 rounded leading-tight focus:outline-none custom-no-spin"
             value={quantity}
             onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
           />
