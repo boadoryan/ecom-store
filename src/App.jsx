@@ -1,12 +1,11 @@
 import "./App.css";
-import { useFetch } from "./hooks/useFetch";
+import { useFetchProducts } from "./hooks/useFetchProducts";
 import HomePage from "./container/Home/HomePage";
 import SelectedProductPage from "./container/SelectedProductPage/SelectedProductPage";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./Navbar";
 import CartPage from "./container/CartPage/CartPage";
 import useFetchExchangeRate from "./hooks/useFetchExchangeRate";
-import { capitalizeFirstLetter } from "./utils/stringUtils";
 import { useSelector } from "react-redux";
 
 function App() {
@@ -25,7 +24,7 @@ function App() {
     baseRate,
   } = useFetchExchangeRate(EXCHANGE_RATE_URL);
 
-  const { data, loading, error } = useFetch(PRODUCTS_URL, exchangeRate);
+  const { data, loading, error } = useFetchProducts(PRODUCTS_URL, exchangeRate);
 
   return (
     <>
@@ -37,11 +36,7 @@ function App() {
           <Route
             path="/"
             element={
-              <HomePage
-                data={data}
-                capitalizeFirstLetter={capitalizeFirstLetter}
-                currencyToConvertTo={currencyToConvertTo}
-              />
+              <HomePage data={data} currencyToConvertTo={currencyToConvertTo} />
             }
           ></Route>
           <Route
@@ -49,15 +44,11 @@ function App() {
             element={
               <SelectedProductPage
                 data={data}
-                capitalizeFirstLetter={capitalizeFirstLetter}
                 currencyToConvertTo={currencyToConvertTo}
               />
             }
           ></Route>
-          <Route
-            path="/cart"
-            element={<CartPage capitalizeFirstLetter={capitalizeFirstLetter} />}
-          ></Route>
+          <Route path="/cart" element={<CartPage />}></Route>
         </Routes>
       )}
     </>

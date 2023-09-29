@@ -1,36 +1,4 @@
-import React, { useState, useEffect } from "react";
-import TwoColumnLayout from "../../components/TwoColumnLayout";
-import ResponsiveContainer from "../../components/ResponsiveContainer";
-
-const HeroBanner = ({ data, capitalizeFirstLetter }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const autoNextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % data.length);
-  };
-
-  function cleanAndCapitalize(text) {
-    // Split the text by commas
-    const parts = text.split(", ");
-
-    // Capitalize each part and join them back together with commas
-    const cleanedText = parts
-      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-      .join(", ");
-
-    return cleanedText;
-  }
-
-  useEffect(() => {
-    const intervalId = setInterval(autoNextImage, 5000);
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
-
-  const currentImage = data[currentImageIndex].image;
-  const categories = [];
-
+const HeroBanner = () => {
   return (
     <>
       <div className="bg-white mx-2 p-8 grid md:grid md:grid-cols-2 border border-black rounded md:mb-20 mb-8 ">

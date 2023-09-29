@@ -66,7 +66,6 @@ const OrderOverview = ({ formData, total, tax }) => {
             <span>3-5 business days</span>
           </div>
         </div>
-        {/* <div className="grid grid-cols-2 gap-4"> */}
         <div className="flex gap-16">
           <div className="flex flex-col gap-4 w-2/5">
             <CustomerInfoOverview
@@ -100,7 +99,6 @@ const OrderOverview = ({ formData, total, tax }) => {
           </div>
         </div>
       </div>
-      {/* </div> */}
     </>
   );
 };

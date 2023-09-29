@@ -1,13 +1,9 @@
 import React from "react";
 import ProductListItem from "./ProductListItem";
 import { Link } from "react-router-dom";
+import { capitalizeFirstLetter } from "../../utils/stringUtils";
 
-const FullProductList = ({
-  data,
-  capitalizeFirstLetter,
-  exchangeRate,
-  currencyToConvertTo,
-}) => {
+const FullProductList = ({ data, exchangeRate, currencyToConvertTo }) => {
   const productsByCategory = data.reduce((acc, item) => {
     const category = capitalizeFirstLetter(item.category);
     if (!acc[category]) {
@@ -31,7 +27,6 @@ const FullProductList = ({
                 <Link to={`/product/${product.id}`}>
                   <ProductListItem
                     item={product}
-                    capitalizeFirstLetter={capitalizeFirstLetter}
                     exchangeRate={exchangeRate}
                     currencyToConvertTo={currencyToConvertTo}
                   ></ProductListItem>

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateItemQuantity } from "../../store/cartSlice";
 import CartItem from "./CartItem";
-const Cart = ({ capitalizeFirstLetter }) => {
+const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.items);
   const handleQuantityChange = (itemId, newQuantity) => {
@@ -38,7 +38,6 @@ const Cart = ({ capitalizeFirstLetter }) => {
                   key={itemId}
                   itemId={itemId}
                   item={item}
-                  capitalizeFirstLetter={capitalizeFirstLetter}
                   quantity={quantity}
                   handleQuantityChange={handleQuantityChange}
                 />
@@ -47,7 +46,14 @@ const Cart = ({ capitalizeFirstLetter }) => {
           </div>
         </div>
       ) : (
-        <p>You have no items in your cart.</p>
+        <div className="flex flex-col gap-8 justify-center items-center">
+          <img
+            className="h-[18rem]"
+            src="/src/assets/undraw_empty_cart_co35.svg"
+            alt=""
+          />
+          <p className="text-xl">Looks like your cart is empty.</p>
+        </div>
       )}
     </>
   );
