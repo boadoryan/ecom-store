@@ -1,7 +1,10 @@
 import React from "react";
 import ProductListItem from "./ProductListItem";
 import { Link } from "react-router-dom";
-import { capitalizeFirstLetter } from "../../utils/stringUtils";
+import {
+  capitalizeFirstLetter,
+  convertFirstLetterToLowerWithHyphens,
+} from "../../utils/stringUtils";
 
 const FullProductList = ({ data, exchangeRate, currencyToConvertTo }) => {
   const productsByCategory = data.reduce((acc, item) => {
@@ -16,7 +19,13 @@ const FullProductList = ({ data, exchangeRate, currencyToConvertTo }) => {
   return (
     <>
       {Object.entries(productsByCategory).map(([category, products]) => (
-        <div key={category} className="my-20 mx-2">
+        <div
+          key={category}
+          className="my-20"
+          id={`${convertFirstLetterToLowerWithHyphens(
+            category
+          )}-homepage-section`}
+        >
           <h2 className="font-bold text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl">
             {category}
             <span className="text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-2xl font-normal ml-2">{`(${products.length})`}</span>
