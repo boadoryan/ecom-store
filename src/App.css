@@ -55,9 +55,6 @@ body {
   background-position: center center;
   position: relative;
 }
-a {
-  z-index: 100;
-}
 
 .homepage-category-womens-clothing-container {
   background: linear-gradient(

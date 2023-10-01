@@ -22,59 +22,13 @@ const OrderInfoOverview = ({ tax }) => {
   console.log(cart, total, finalTotal);
 
   return (
-    <div>
+    <div className="mb-8">
       <h3 className="font-bold text-xl mb-4">Order Information:</h3>
       <div className="border p-4 border-black rounded">
-        {Object.keys(cart).map((itemId) => {
-          return (
-            <div key={itemId} className="flex flex-col">
-              {/* Total Before Tax:  */}
-              <div className="flex justify-between mb-2">
-                <p className="font-bold">Total before tax:</p>
-                {updatePriceByCurrency(
-                  total,
-                  exchangeRate,
-                  currencyToConvertTo,
-                  currencySymbol
-                )}
-              </div>
-
-              {/* Tax */}
-              <div className="flex justify-between my-2">
-                <p className="font-bold">Tax:</p>
-                {updatePriceByCurrency(
-                  totalWithTax,
-                  exchangeRate,
-                  currencyToConvertTo,
-                  currencySymbol
-                )}
-              </div>
-
-              {/* Shipping */}
-              <div>
-                <div className="flex justify-between my-2">
-                  <p className="font-bold">Shipping:</p>
-                  $0.00
-                </div>
-              </div>
-
-              {/* Subtotal with tax */}
-              <div className="flex justify-between mt-8">
-                <p className="font-bold">Order Subtotal (with tax):</p>
-                <div className="font-bold">
-                  {updatePriceByCurrency(
-                    finalTotal,
-                    exchangeRate,
-                    currencyToConvertTo,
-                    currencySymbol
-                  )}
-                </div>
-              </div>
-            </div>
-          );
-        })}
-        {/* <div className="flex justify-between mb-2">
-          <p>Total before tax:</p>
+        <div className="flex justify-between mb-2">
+          
+          {/* Total before tax */}
+          <p className="font-bold">Total before tax:</p>
           {updatePriceByCurrency(
             total,
             exchangeRate,
@@ -82,26 +36,36 @@ const OrderInfoOverview = ({ tax }) => {
             currencySymbol
           )}
         </div>
+
+        {/* Tax */}
         <div className="flex justify-between my-2">
-          <p>Tax:</p>
-          {`$${(total * tax).toFixed(2)}`}
+          <p className="font-bold">Tax:</p>
+          {updatePriceByCurrency(
+            totalWithTax,
+            exchangeRate,
+            currencyToConvertTo,
+            currencySymbol
+          )}
         </div>
-        <div className="flex justify-between my-2">
-          <p>Shipping:</p>
-          $0.00
-        </div>
-        <div className="flex justify-between mt-8">
-          <p className="font-bold">Order Subtotal (with tax):</p>
-          <div className="font-bold">
-            {updatePriceByCurrency(
-              total,
-              exchangeRate,
-              currencyToConvertTo,
-              currencySymbol,
-              finalTotal
-            )}
+
+        {/* Shipping */}
+        <div>
+          <div className="flex justify-between my-2">
+            <p className="font-bold">Shipping:</p>
+            $0.00
           </div>
-        </div> */}
+        </div>
+
+        {/* Final subtotal with tax */}
+        <div className="flex justify-between mt-8 font-bold">
+          <p>Order Subtotal (with tax):</p>
+          {updatePriceByCurrency(
+            finalTotal,
+            exchangeRate,
+            currencyToConvertTo,
+            currencySymbol
+          )}
+        </div>
       </div>
     </div>
   );

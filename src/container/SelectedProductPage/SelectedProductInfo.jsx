@@ -1,16 +1,22 @@
 import React from "react";
 import Button from "../../components/Button";
 import { useSelector, useDispatch } from "react-redux";
-import {capitalizeFirstLetter,updatePriceByCurrency} from "../../utils/stringUtils";
+import {
+  capitalizeFirstLetter,
+  updatePriceByCurrency,
+} from "../../utils/stringUtils";
 import { useState } from "react";
 import { addItemToCart } from "../../store/cartSlice";
 
 const SelectedProductInfo = ({ data, id }) => {
-  
   // Redux variables
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
-  const currencyToConvertTo = useSelector((state) => state.exchangeRate.currencyToConvertTo);
-  const currencySymbol = useSelector((state) => state.exchangeRate.currencySymbol);
+  const currencyToConvertTo = useSelector(
+    (state) => state.exchangeRate.currencyToConvertTo
+  );
+  const currencySymbol = useSelector(
+    (state) => state.exchangeRate.currencySymbol
+  );
   const dispatch = useDispatch();
 
   // Component state variables
@@ -20,10 +26,16 @@ const SelectedProductInfo = ({ data, id }) => {
   // Selected product
   const currentProductSelected = data[id - 1];
 
-  // FUNCTIONS 
-  const decrementQuantity = () => {if (quantity > 1) {setQuantity(quantity - 1)}};
+  // FUNCTIONS
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
 
-  const incrementQuantity = () => {setQuantity(quantity + 1)};
+  const incrementQuantity = () => {
+    setQuantity(quantity + 1);
+  };
 
   const addItemWithQuantity = () => {
     const itemToAdd = data[id - 1];
@@ -38,7 +50,7 @@ const SelectedProductInfo = ({ data, id }) => {
   };
 
   return (
-    <div className="p-6 md:p-8 lg:p-10 rounded bg-[#e2ebf8] h-full flex flex-col border-2 border-black">
+    <div className="p-6 lg:p-10 rounded bg-[#e2ebf8] h-full flex flex-col border-2 border-black">
       {/* Category Name */}
       <div className="md:text-start mb-2">
         {capitalizeFirstLetter(currentProductSelected.category)}
@@ -69,7 +81,7 @@ const SelectedProductInfo = ({ data, id }) => {
 
       {/* Quantity */}
       <div className="md:text-start flex flex-col  md:items-start my-6">
-        <div className="font-bold md:text-lg mb-4">Quantity:</div>
+        <div className="font-bold md:text-lg mb-4 self-start">Quantity:</div>
         <div className="flex items-center">
           <button
             onClick={decrementQuantity}
@@ -79,7 +91,7 @@ const SelectedProductInfo = ({ data, id }) => {
           </button>
           <input
             type="number"
-            className="appearance-none border border-black hover:bg-[#f0f0f0] bg-white text-center py-3 px-6 mx-2 rounded leading-tight focus:outline-none custom-no-spin"
+            className="appearance-none border border-black hover:bg-[#f0f0f0] bg-white text-center py-3 mx-2 rounded leading-tight focus:outline-none custom-no-spin"
             value={quantity}
             onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
           />

@@ -4,7 +4,8 @@ import { validatePaymentForm } from "../../formValidation";
 const PaymentForm = ({ formData, setFormData }) => {
   return (
     <>
-      <div className="border rounded p-8 bg-[#f4f4f4]">
+      <p className="font-bold text-xl  mb-4">Payment Information</p>
+      <div className=" rounded p-4 border bg-slate-50 my-4">
         <FormInput
           labelName={"Card Number (For testing: 4111 1111 1111 1111)"}
           inputType={"text"}

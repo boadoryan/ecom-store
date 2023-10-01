@@ -31,26 +31,21 @@ const PurchasedItemsOverview = () => {
   }, [dispatch, cartCleared]);
   return (
     <>
-      <div>
+      <div className="mb-4">
         <h3 className="font-bold text-xl mb-4">Your Items:</h3>
-        <div className="border border-black rounded">
+        <div className="border border-black rounded p-8 flex flex-col  justify-center align-center">
           {Object.keys(cart).map((itemId) => {
             const item = cart[itemId].item;
             const quantity = cart[itemId].quantity;
             return (
-              <div key={itemId} className="flex p-8 gap-8">
-                <div className="flex justify-center items-center">
-                  <img
-                    className="h-[5rem] object-contain"
-                    src={item.image}
-                    alt=""
-                  />
-                </div>
-                <div>
-                  <p className="text-xl font-bold ">{item.title}</p>
-                  <div>Quantity: {quantity}</div>
-                  {/* <p className="">Item Price: {item.price.toFixed(2)}</p> */}
-                  <p className="">
+              <div
+                key={itemId}
+                className="grid grid-cols-2 py-4 px-2 gap-8 md:gap-4 overflow-x-hidden"
+              >
+                <div className="">
+                  <p className="text-md font-bold mb-2 ">{item.title}</p>
+                  <div className="text-sm">Quantity: {quantity}</div>
+                  <p className="text-sm">
                     Item Price:{" "}
                     {updatePriceByCurrency(
                       item.price,
@@ -59,8 +54,7 @@ const PurchasedItemsOverview = () => {
                       currencySymbol
                     )}
                   </p>
-                  <p className="">
-                    {/* Item Subtotal: {(item.price * quantity).toFixed(2)} */}
+                  <p className="text-sm">
                     Item Subtotal:{" "}
                     {updatePriceByCurrency(
                       item.price * quantity,
@@ -69,6 +63,13 @@ const PurchasedItemsOverview = () => {
                       currencySymbol
                     )}
                   </p>
+                </div>
+                <div className="flex items-center justify-center ">
+                  <img
+                    className="h-[6rem] md:h-[6rem] object-contain"
+                    src={item.image}
+                    alt=""
+                  />
                 </div>
               </div>
             );
