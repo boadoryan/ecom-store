@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSelector, useDispatch } from "react-redux";
-// import CartPreview from "./container/CartPage/CartPreview";
 import {
   updateCurrencyToConvertTo,
   updateCurrencySymbol,
@@ -18,7 +17,6 @@ const Navbar = ({ setCurrencyToConvertTo }) => {
   const dispatch = useDispatch();
 
   const currencySymbols = {
-    // To be implemented.
     usd: "$",
     cad: "$",
     gbp: "£",

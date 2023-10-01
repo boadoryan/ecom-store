@@ -3,18 +3,24 @@ import { Link } from "react-router-dom";
 import { capitalizeFirstLetter } from "../../utils/stringUtils";
 
 const InfoBanner = ({ data }) => {
+  // Return only the products with a title less than 7 words.
   const filteredData = data.filter((item) => {
     const words = item.title.split(" ");
     return words.length <= 7;
   });
+
+  // Random number to get a random item.
   const randomNumIndex = Math.floor(Math.random() * filteredData.length);
+
+  // Random product
   const randomProduct = filteredData[randomNumIndex];
   return (
     <>
       <h2 className="font-bold text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl mb-4">
         Featured Product
       </h2>
-      <div className="md:grid md:grid-cols-5 gap-4  lg:grid  lg:grid-cols-5 lg:gap-4 shadow">
+      {/* <div className="md:grid md:grid-cols-5 gap-8 lg:grid  lg:grid-cols-5 lg:gap-4 shadow"> */}
+      <div className="grid grid-cols-1 gap-y-4 md:grid-cols-5 md:gap-4">
         <div className="col-span-3  border-2 border-black rounded flex justify-center items-center py-4 bg-white ">
           <div className="">
             <img

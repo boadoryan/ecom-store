@@ -5,19 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { removeItemFromCart } from "../../store/cartSlice";
 import { updatePriceByCurrency } from "../../utils/stringUtils";
 import { capitalizeFirstLetter } from "../../utils/stringUtils";
-import Button from "../../components/Button";
 
 const CartItem = ({ itemId, item, quantity, handleQuantityChange }) => {
+  
   const dispatch = useDispatch();
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
-  const currencyToConvertTo = useSelector(
-    (state) => state.exchangeRate.currencyToConvertTo
-  );
-  const currencySymbol = useSelector(
-    (state) => state.exchangeRate.currencySymbol
-  );
+  const currencyToConvertTo = useSelector((state) => state.exchangeRate.currencyToConvertTo);
+  const currencySymbol = useSelector((state) => state.exchangeRate.currencySymbol);
 
-  console.log("exchangeRate in cartItem", exchangeRate);
   return (
     <div
       key={itemId}
@@ -76,7 +71,7 @@ const CartItem = ({ itemId, item, quantity, handleQuantityChange }) => {
         <span className="font-bold md:hidden">Item Total:</span>
         <p>
           {updatePriceByCurrency(
-            item.price,
+            item.price * quantity,
             exchangeRate,
             currencyToConvertTo,
             currencySymbol

@@ -10,14 +10,83 @@ select:-webkit-autofill,
 select:-webkit-autofill:focus {
   transition: background-color 0s 600000s, color 0s 600000s;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   background-color: rgb(255, 255, 255);
 }
 
-/* select {
-  appearance: none;
-  background: url("./assets/angle-down-solid.svg") no-repeat right 10px center
-    white;
-  background-size: 16px;
-} */
+.homepage-category-electronics-container {
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 60%,
+      rgba(0, 0, 0, 0.9)
+    ),
+    url(assets/electronics_category.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+}
+
+.homepage-category-clothing-container {
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 60%,
+      rgba(0, 0, 0, 0.9)
+    ),
+    url(assets/clothing_category.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+}
+
+.homepage-category-jewelry-container {
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 60%,
+      rgba(0, 0, 0, 0.9)
+    ),
+    url(assets/jewelry_category.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+}
+a {
+  z-index: 100;
+}
+
+.homepage-category-womens-clothing-container {
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 60%,
+      rgba(0, 0, 0, 0.8)
+    ),
+    url(assets/womens_clothing_category.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+}
+
+.homepage-category-mens-clothing-container {
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 60%,
+      rgba(0, 0, 0, 0.8)
+    ),
+    url(assets/mens_clothing_category2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+}
+
+.homepage-category-text {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+}
