@@ -48,11 +48,11 @@ const OrderOverview = ({ formData, total, tax }) => {
   return (
     <>
       <div className="flex flex-col w-full">
-        <div className="flex flex-col mb-36 mt-16">
+        <div className="flex flex-col mb-36">
           <div className="flex justify-center items-center">
             <img
-              className="h-[6rem] mb-4 object-contain"
-              src="/src/assets/undraw_order_confirmed_re_g0if.svg"
+              className="h-[6rem] mb-4 object-contain md:h-[10rem]"
+              src="/public/assets/undraw_order_confirmed_re_g0if.svg"
               alt=""
             />
           </div>

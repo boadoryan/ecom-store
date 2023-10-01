@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSelector, useDispatch } from "react-redux";
-import CartPreview from "./container/CartPage/CartPreview";
-import { updateCartPrices } from "./store/cartSlice"; // Import the action to update cart prices
-import { updateCurrencyToConvertTo } from "./store/exchangeRateSlice";
+// import CartPreview from "./container/CartPage/CartPreview";
+import {
+  updateCurrencyToConvertTo,
+  updateCurrencySymbol,
+} from "./store/exchangeRateSlice";
 
 const Navbar = ({ setCurrencyToConvertTo }) => {
   const cart = useSelector((state) => state.cart.items);
@@ -15,44 +17,29 @@ const Navbar = ({ setCurrencyToConvertTo }) => {
   const totalQuantity = Object.keys(cart).length;
   const dispatch = useDispatch();
 
+  const currencySymbols = {
+    // To be implemented.
+    usd: "$",
+    cad: "$",
+    gbp: "£",
+    eur: "€",
+  };
+
   const handleCurrencyChange = (e) => {
     const newCurrency = e.target.value;
     setCurrencyToConvertTo(newCurrency);
+    dispatch(updateCurrencySymbol(currencySymbols[newCurrency]));
     dispatch(updateCurrencyToConvertTo(newCurrency));
   };
 
   return (
-    <nav className=" py-6 px- sm:px-4 md:px-6 lg:px-8 xl:px-10 shadow-sm bg-[#f0f0f0]">
+    <nav className="py-6 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 shadow-sm bg-[#f0f0f0]">
       <div className="flex flex-col px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
         <div className="flex flex-col sm:flex-row justify-between items-center">
           <Link to="/" className="text-black font-bold text-xl sm:text-2xl">
-            Trendiez
+            Trendie
           </Link>
-          <ul className="flex space-x-6 mt-4 sm:mt-0">
-            <li>
-              {/* <Link
-                to="/"
-                className="text-black hover:text-gray-300 transition-colors"
-              >
-                Home
-              </Link> */}
-            </li>
-            {/* <li>
-              <Link
-                to="/about"
-                className="text-black hover:text-gray-300 transition-colors"
-              >
-                About
-              </Link>
-            </li> */}
-            {/* <li>
-              <Link
-                to="/contact"
-                className="text-black hover:text-gray-300 transition-colors"
-              >
-                Contact
-              </Link>
-            </li> */}
+          <ul className="flex  items-center space-x-6 mt-4 sm:mt-0">
             <li>
               <label htmlFor="currency" className="">
                 Currency:
@@ -61,7 +48,7 @@ const Navbar = ({ setCurrencyToConvertTo }) => {
                 onChange={(e) => handleCurrencyChange(e)}
                 name="currency"
                 id="id"
-                className="bg-white px-2 font-bold"
+                className="bg-white px-2 py-1 font-bold ml-2 rounded"
                 defaultValue={currencyToConvertTo}
               >
                 <option value="cad">CAD</option>
@@ -73,12 +60,12 @@ const Navbar = ({ setCurrencyToConvertTo }) => {
             <li>
               <Link
                 to="/cart"
-                className="text-black hover:text-gray-300 transition-colors"
+                className="text-black hover:text-gray-300 transition-colors relative"
               >
-                <span className="mr-2">Cart</span>{" "}
+                <span className="mr-2">Cart</span>
                 <FontAwesomeIcon icon={faCartShopping} />
                 {totalQuantity > 0 && (
-                  <span className="bg-[#e2ebf8] text-black rounded-full h-5 w-5 absolute bottom-5 left-14 flex items-center justify-center text-xs">
+                  <span className="bg-[#7fddff] text-black rounded-full h-5 w-5 absolute -top-2 -right-6 flex items-center justify-center text-xs">
                     {totalQuantity}
                   </span>
                 )}

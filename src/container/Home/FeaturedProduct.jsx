@@ -11,10 +11,10 @@ const InfoBanner = ({ data }) => {
   const randomProduct = filteredData[randomNumIndex];
   return (
     <>
-      <h2 className="font-bold text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl mb-4 mx-2">
+      <h2 className="font-bold text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl mb-4">
         Featured Product
       </h2>
-      <div className="md:grid md:grid-cols-5 gap-4  lg:grid  lg:grid-cols-5 lg:gap-4 mx-2">
+      <div className="md:grid md:grid-cols-5 gap-4  lg:grid  lg:grid-cols-5 lg:gap-4 shadow">
         <div className="col-span-3  border-2 border-black rounded flex justify-center items-center py-4 bg-white ">
           <div className="">
             <img
@@ -35,7 +35,7 @@ const InfoBanner = ({ data }) => {
               .join(" ")}
           </div>
           <Link to={`/product/${randomProduct.id}`}>
-            <button className="border border-black lg:mt-8 p-4">
+            <button className="border rounded  border-black lg:mt-8 px-6 py-2 hover:bg-[#f0f0f0]">
               Shop Now
             </button>
           </Link>

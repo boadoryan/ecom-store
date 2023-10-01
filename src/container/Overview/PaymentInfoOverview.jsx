@@ -4,7 +4,7 @@ const PaymentInfoOverview = ({ cardNumber, nameOnCard, expirationDate }) => {
   return (
     <div>
       <h3 className="font-bold text-xl mb-4">Payment Information:</h3>
-      <div className="border p-4">
+      <div className="border p-4 border-black rounded">
         <div className="flex flex-col gap-y-4">
           <div>
             <p className="font-bold ">Card Number:</p>

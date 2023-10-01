@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useMultistepForm } from "../../hooks/useMultistepForm";
+import { updatePurchasedItems } from "../../store/cartSlice";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
 import CartPageHeader from "./CartPageHeader";
 import Cart from "./Cart";
@@ -43,12 +44,13 @@ const CartPage = ({ capitalizeFirstLetter }) => {
   ]);
 
   const tax = 0.07;
-  const cart = useSelector((state) => state.cart.items);
+  const cart = useSelector((state) => state.cart.purchasedItems);
   const total = Object.values(cart).reduce((accumulator, currentItem) => {
     const itemTotal = currentItem.item.price * currentItem.quantity;
     return accumulator + itemTotal;
   }, 0);
 
+  const dispatch = useDispatch();
   // const [allFieldsValidated, setAllFieldsValidated] = useState(false);
   const [showOverview, setShowOverview] = useState(false);
   const [showError, setShowError] = useState(null);
@@ -60,8 +62,10 @@ const CartPage = ({ capitalizeFirstLetter }) => {
       (value) => value.trim() !== ""
     );
     if (allFieldsFilled) {
+      dispatch(updatePurchasedItems());
       setShowOverview(true);
       setShowError(false);
+
       console.log("Form Data:", formData);
     } else {
       console.log("Some fields are missing.");
@@ -70,6 +74,7 @@ const CartPage = ({ capitalizeFirstLetter }) => {
   };
   return (
     <ResponsiveContainer>
+      {/* <div className="flex flex-col md:mx-20 my-12 md:flex-col lg:flex-col xl:flex-row gap-12 pb-48"> */}
       <div className="flex flex-col md:mx-20 my-12 md:flex-col lg:flex-col xl:flex-row gap-12 pb-48">
         {showOverview ? (
           <OrderOverview formData={formData} total={total} tax={tax} />

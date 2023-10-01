@@ -10,11 +10,14 @@ const Overview = ({ next, total, tax }) => {
   const currencyToConvertTo = useSelector(
     (state) => state.exchangeRate.currencyToConvertTo
   );
+  const currencySymbol = useSelector(
+    (state) => state.exchangeRate.currencySymbol
+  );
 
   return (
     <>
       <div>
-        <div className="border rounded min-h-[20rem] p-8 mt-4">
+        <div className="border border-black rounded min-h-[20rem] p-8 mt-4">
           <h1 className="font-bold text-3xl mb-8">Summary</h1>
           <div className="flex flex-col gap-4">
             <div className="flex justify-between border-b py-2">
@@ -23,7 +26,8 @@ const Overview = ({ next, total, tax }) => {
                 {updatePriceByCurrency(
                   total,
                   exchangeRate,
-                  currencyToConvertTo
+                  currencyToConvertTo,
+                  currencySymbol
                 )}
               </p>
             </div>
@@ -37,7 +41,8 @@ const Overview = ({ next, total, tax }) => {
                 {updatePriceByCurrency(
                   total * tax,
                   exchangeRate,
-                  currencyToConvertTo
+                  currencyToConvertTo,
+                  currencySymbol
                 )}
               </p>
             </div>
@@ -51,7 +56,8 @@ const Overview = ({ next, total, tax }) => {
                 {updatePriceByCurrency(
                   total * tax + total,
                   exchangeRate,
-                  currencyToConvertTo
+                  currencyToConvertTo,
+                  currencySymbol
                 )}
               </p>
             </div>
@@ -65,10 +71,10 @@ const Overview = ({ next, total, tax }) => {
                 />
               ) : null}
               <div
-                className="w-full rounded px-2 py-4 border text-center bg-white
+                className="w-full rounded px-2 py-4 border text-center bg-white hover:bg-[#f0f0f0] border-black
               my-4"
               >
-                <Link to="/contact">Continue Shopping</Link>
+                <Link to="/">Continue Shopping</Link>
               </div>
             </div>
           </div>

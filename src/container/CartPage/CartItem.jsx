@@ -13,12 +13,15 @@ const CartItem = ({ itemId, item, quantity, handleQuantityChange }) => {
   const currencyToConvertTo = useSelector(
     (state) => state.exchangeRate.currencyToConvertTo
   );
+  const currencySymbol = useSelector(
+    (state) => state.exchangeRate.currencySymbol
+  );
 
   console.log("exchangeRate in cartItem", exchangeRate);
   return (
     <div
       key={itemId}
-      className="border flex flex-col md:grid md:grid-cols-7 lg:grid lg:grid-cols-7 xl:grid xl:grid-cols-7 mb-4 py-2 items-center"
+      className="border border-black rounded cart-item-test md:grid md:grid-cols-9 mb-4 py-4 flex items-center"
     >
       <div className="col-span-1 px-4 py-2">
         <div className=" flex md:flex justify-center items-center">
@@ -29,21 +32,26 @@ const CartItem = ({ itemId, item, quantity, handleQuantityChange }) => {
           />
         </div>
       </div>
-      <div className="col-span-2 px-4 py-2">
-        <div className="flex flex-col">
+      <div className="col-span-3 px-4 py-2 flex md:px-4 md:py-2 md:text-md lg:text-lg">
+        <div className="flex flex-col md:truncate">
           <p className="md:text-sm text-sm lg:text-md md:text-start text-center">
             {capitalizeFirstLetter(item.category)}
           </p>
-          <p className="font-bold md:text-md  lg:text-lg truncate">
+
+          <p className="font-bold md:text-md md:text-start lg:text-lg mb-1 text-center">
             {item.title}
           </p>
+          <div className="text-center md:text-start">
+            {updatePriceByCurrency(
+              item.price,
+              exchangeRate,
+              currencyToConvertTo,
+              currencySymbol
+            )}
+          </div>
         </div>
       </div>
-      <div className="col-span-1 flex gap-2 md:px-4 md:py-2 font-bold md:text-md lg:text-lg ">
-        <p className="font-bold md:hidden">Price:</p>
-        {updatePriceByCurrency(item.price, exchangeRate, currencyToConvertTo)}
-      </div>
-      <div className="col-span-1 my-4 px-4 py-2">
+      <div className="col-span-2 my-4 px-4 py-2 md:ml-8">
         <div className="flex items-center">
           <button
             type="button"
@@ -64,20 +72,23 @@ const CartItem = ({ itemId, item, quantity, handleQuantityChange }) => {
           </button>
         </div>
       </div>
-      <div className="col-span-1 px-4 py-2 font-bold md:text-md lg:text-lg">
+      <div className="col-span-2 px-4 py-2 text-center font-bold md:text-md lg:text-lg ml-4">
         <span className="font-bold md:hidden">Item Total:</span>
-        {` $${
-          currencyToConvertTo !== "cad"
-            ? (quantity * item.price * exchangeRate).toFixed(2)
-            : (quantity * item.price).toFixed(2)
-        }`}
+        <p>
+          {updatePriceByCurrency(
+            item.price,
+            exchangeRate,
+            currencyToConvertTo,
+            currencySymbol
+          )}
+        </p>
       </div>
 
-      <div className="col-span-1">
+      <div className="col-span-1 ml-4">
         <div className="text-2xl md:text-md lg:text-2xl my-2">
           {/* Button for mobile */}
           <button
-            className="block md:hidden border text-sm px-4 py-2 rounded bg-red-"
+            className="block md:hidden border text-sm px-4 py-2 rounded hover:bg-red-400 border-black"
             onClick={() => dispatch(removeItemFromCart(item.id))}
           >
             Remove
@@ -85,10 +96,17 @@ const CartItem = ({ itemId, item, quantity, handleQuantityChange }) => {
 
           {/* Icon for larger screens */}
           <div className="hidden md:block">
-            <Button
-              handleOnClick={() => dispatch(removeItemFromCart(item.id))}
-              text={<FontAwesomeIcon icon={faTrash} />}
-            />
+            <div className="flex justify-center items-center mr-3">
+              <button
+                className="text-sm rounded border-black"
+                onClick={() => dispatch(removeItemFromCart(item.id))}
+              >
+                <FontAwesomeIcon
+                  icon={faTrash}
+                  className="hover:text-red-400 text-2xl"
+                />
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -17,10 +17,10 @@ const CategoriesBanner = ({ data }) => {
   };
   return (
     <>
-      <h2 className="font-bold text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl lg:mb-4 mx-2 mb-4">
+      <h2 className="font-bold text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl lg:mb-4 mb-4">
         Find the best deals on:
       </h2>
-      <div className="md:mb-20 mb-8 mx-2">
+      <div className="md:mb-20 mb-8">
         <div className="grid gap-6 grid-cols-1 md:grid md:grid-cols-2 lg:grid-cols-4">
           {/* First category */}
           <a onClick={() => scrollToSection("electronics-homepage-section")}>

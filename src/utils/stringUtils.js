@@ -24,11 +24,12 @@ export const convertFirstLetterToLowerWithHyphens = (str) => {
 export const updatePriceByCurrency = (
   price,
   exchangeRate,
-  currencyToConvertTo
+  currencyToConvertTo,
+  currencySymbol
 ) => {
   return currencyToConvertTo !== "cad"
-    ? `$${(price * exchangeRate).toFixed(2)}`
-    : `$${price.toFixed(2)}`;
+    ? `${currencySymbol}${(price * exchangeRate).toFixed(2)}`
+    : `${currencySymbol}${price.toFixed(2)}`;
 };
 
 export const convertToCamelCase = (str) => {

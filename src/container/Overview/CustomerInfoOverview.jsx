@@ -14,7 +14,7 @@ const CustomerInfoOverview = ({
   return (
     <div>
       <h3 className="font-bold text-xl mb-4">Shipping Information:</h3>
-      <div className="border p-4">
+      <div className="border border-black rounded p-4">
         <div className="flex flex-col gap-y-4">
           {/* Full Name */}
           <div>
