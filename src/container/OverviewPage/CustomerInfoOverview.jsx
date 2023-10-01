@@ -12,7 +12,7 @@ const CustomerInfoOverview = ({
   email,
 }) => {
   return (
-    <div>
+    <div className="mb-4">
       <h3 className="font-bold text-xl mb-4">Shipping Information:</h3>
       <div className="border border-black rounded p-4">
         <div className="flex flex-col gap-y-4">

@@ -2,7 +2,7 @@ import React from "react";
 
 const PaymentInfoOverview = ({ cardNumber, nameOnCard, expirationDate }) => {
   return (
-    <div>
+    <div className="mb-4">
       <h3 className="font-bold text-xl mb-4">Payment Information:</h3>
       <div className="border p-4 border-black rounded">
         <div className="flex flex-col gap-y-4">

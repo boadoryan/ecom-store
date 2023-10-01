@@ -7,11 +7,14 @@ import { updatePriceByCurrency } from "../../utils/stringUtils";
 import { capitalizeFirstLetter } from "../../utils/stringUtils";
 
 const CartItem = ({ itemId, item, quantity, handleQuantityChange }) => {
-  
   const dispatch = useDispatch();
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
-  const currencyToConvertTo = useSelector((state) => state.exchangeRate.currencyToConvertTo);
-  const currencySymbol = useSelector((state) => state.exchangeRate.currencySymbol);
+  const currencyToConvertTo = useSelector(
+    (state) => state.exchangeRate.currencyToConvertTo
+  );
+  const currencySymbol = useSelector(
+    (state) => state.exchangeRate.currencySymbol
+  );
 
   return (
     <div
@@ -28,12 +31,12 @@ const CartItem = ({ itemId, item, quantity, handleQuantityChange }) => {
         </div>
       </div>
       <div className="col-span-3 px-4 py-2 flex md:px-4 md:py-2 md:text-md lg:text-lg">
-        <div className="flex flex-col md:truncate">
+        <div className="flex flex-col">
           <p className="md:text-sm text-sm lg:text-md md:text-start text-center">
             {capitalizeFirstLetter(item.category)}
           </p>
 
-          <p className="font-bold md:text-md md:text-start lg:text-lg mb-1 text-center">
+          <p className="font-bold md:text-md md:text-start lg:text-lg my-2 text-center">
             {item.title}
           </p>
           <div className="text-center md:text-start">
@@ -67,7 +70,7 @@ const CartItem = ({ itemId, item, quantity, handleQuantityChange }) => {
           </button>
         </div>
       </div>
-      <div className="col-span-2 px-4 py-2 text-center font-bold md:text-md lg:text-lg ml-4">
+      <div className="col-span-2 px-4 py-2  text-center font-bold md:text-md lg:text-lg ml-4">
         <span className="font-bold md:hidden">Item Total:</span>
         <p>
           {updatePriceByCurrency(

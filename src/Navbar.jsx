@@ -31,7 +31,7 @@ const Navbar = ({ setCurrencyToConvertTo }) => {
   };
 
   return (
-    <nav className="py-6 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 shadow-sm bg-[#f0f0f0]">
+    <nav className="py-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 shadow-sm bg-[#f0f0f0]">
       <div className="flex flex-col px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
         <div className="flex flex-col sm:flex-row justify-between items-center">
           <Link to="/" className="text-black font-bold text-xl sm:text-2xl">

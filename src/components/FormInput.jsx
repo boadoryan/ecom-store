@@ -48,15 +48,15 @@ const FormInput = ({
 
   return (
     <>
-      <div className="my-4">
+      <div className="mb-4">
         {/* Render the label */}
-        <label className="font-bold text-md" htmlFor={inputName}>
+        <label className="font-bold text-sm md:text-md " htmlFor={inputName}>
           {labelName}
         </label>
         <br />
         {/* Render the input element */}
         <input
-          className={`bg-white text-black p-4 w-full border rounded mt-4 ${
+          className={`bg-white text-black text-sm md:text-md w-full border rounded px-2 py-3 md:py-4 mt-2${
             isFieldValid ? "" : "border-red-500"
           }`}
           placeholder={placeHolder}
@@ -67,7 +67,9 @@ const FormInput = ({
           onBlur={handleBlur}
         />
         {/* Display an error message if the field is invalid */}
-        {!isFieldValid && <div className="text-red-500">{errorText}</div>}
+        {!isFieldValid && (
+          <div className="text-sm text-red-500">{errorText}</div>
+        )}
       </div>
     </>
   );

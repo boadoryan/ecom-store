@@ -11,8 +11,6 @@ import {
 import { Link } from "react-router-dom";
 import { clearPurchasedItems } from "../../store/cartSlice";
 
-import { useState, useEffect } from "react";
-
 const OrderOverview = ({ formData, total, tax }) => {
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
   const currencyToConvertTo = useSelector(
@@ -44,35 +42,37 @@ const OrderOverview = ({ formData, total, tax }) => {
   const generateRandomOrderNumber = () => {
     // Generate a random integer between 1 and 9999 (inclusive)
     const randomOrderNumber = Math.floor(Math.random() * 9999) + 1;
-    // You can add leading zeros if needed to ensure a consistent length, e.g., 0001, 0002, etc.
     const paddedOrderNumber = String(randomOrderNumber).padStart(4, "0");
     return paddedOrderNumber;
   };
 
-
   return (
     <>
-      <div className="flex flex-col w-full">
-        <div className="flex flex-col mb-36">
+      <div className="flex flex-col w-full mt-12 ">
+        <div className="flex flex-col mb-16 ">
           <div className="flex justify-center items-center">
             <img
-              className="h-[6rem] mb-4 object-contain md:h-[10rem]"
+              className="h-[8rem] mb-12 object-contain md:h-[10rem]"
               src="assets/undraw_order_confirmed_re_g0if.svg"
               alt=""
             />
           </div>
-          <h1 className="text-6xl font-bold text-center">Thank you!</h1>
-          <h1 className="text-2xl font-medium text-center my-6">
+          <h1 className=" text-3xl md:text-6xl font-bold text-center">
+            Thank you!
+          </h1>
+          <h1 className=" text-lg md:text-2xl font-medium text-center my-2 md:my-6">
             Order #{generateRandomOrderNumber()} has been successfully
             completed.
           </h1>
-          <div className="w-full text-center text-lg">
-            <span className="font-bold ">Estimated shipping time: </span>
-            <span>3-5 business days</span>
+          <div className="w-full text-center md:text-lg">
+            <div className="flex flex-col items-center md:flex-row gap-2 justify-center">
+              <span className="font-bold ">Estimated shipping time: </span>
+              <span>3-5 business days</span>
+            </div>
           </div>
         </div>
-        <div className="flex gap-16">
-          <div className="flex flex-col gap-4 w-2/5">
+        <div className="flex flex-col gap-8 md:flex-row">
+          <div className="flex-col md:flex-col gap-4 w-full md:w-1/2">
             <CustomerInfoOverview
               firstName={firstName}
               lastName={lastName}
@@ -94,8 +94,15 @@ const OrderOverview = ({ formData, total, tax }) => {
               total={total}
               tax={tax}
             />
+            <Link
+              className="mt-4 border border-black rounded px-6 py-2 hover:bg-[#f0f0f0]"
+              onClick={() => dispatch(clearPurchasedItems())}
+              to="/"
+            >
+              Back To Home
+            </Link>
           </div>
-          <div className="w-3/5">
+          <div className="md:w-1/2 -order-1 md:order-1 ">
             <PurchasedItemsOverview
               finalTotal={finalTotal}
               total={total}
@@ -103,9 +110,6 @@ const OrderOverview = ({ formData, total, tax }) => {
             />
           </div>
         </div>
-        <Link onClick={() => dispatch(clearPurchasedItems())} to="/">
-          Back To Home
-        </Link>
       </div>
     </>
   );

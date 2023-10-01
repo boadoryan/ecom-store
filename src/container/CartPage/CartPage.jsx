@@ -74,7 +74,7 @@ const CartPage = () => {
   };
   return (
     <ResponsiveContainer>
-      <div className="flex flex-col md:mx-20 my-12 md:flex-col lg:flex-col xl:flex-row gap-12 pb-48">
+      <div className="flex flex-col md:my-4 md:flex-col lg:flex-col xl:flex-row gap-12 pb-48">
         {showOverview ? (
           <OrderOverview formData={formData} tax={tax} />
         ) : (
@@ -86,7 +86,7 @@ const CartPage = () => {
                 {!isFirstStep && !isLastStep ? (
                   <div className="self-end">
                     <button
-                      className="mt-4 border rounded px-6 py-2"
+                      className="mt-4 border border-black rounded px-6 py-2 hover:bg-[#f0f0f0]"
                       onClick={next}
                       type="button"
                     >
@@ -98,7 +98,7 @@ const CartPage = () => {
                   <div className="group relative">
                     <button
                       type="submit"
-                      className="mt-4 border rounded px-6 py-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="mt-4 border border-black rounded px-6 py-2 hover:bg-[#f0f0f0] disabled:opacity-50 disabled:cursor-not-allowed"
                       onClick={handleSubmit}
                     >
                       Submit
@@ -118,6 +118,7 @@ const CartPage = () => {
               back={back}
               total={total}
               tax={tax}
+              isFirstStep={isFirstStep}
             />
           </div>
         ) : null}

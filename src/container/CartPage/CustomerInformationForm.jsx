@@ -4,8 +4,8 @@ import { validateCustomerInformationForm } from "../../formValidation";
 const CustomerInformationForm = ({ formData, setFormData }) => {
   return (
     <>
-      <p className="font-bold text-2xl mb-8">Contact Information</p>
-      <div className="border rounded px-8 py-4 bg-[#f4f4f4]">
+      <p className="font-bold text-lg">Contact Information</p>
+      <div className=" rounded p-4 border bg-slate-50 my-4">
         <FormInput
           labelName={"Email"}
           inputType={"text"}
@@ -15,9 +15,9 @@ const CustomerInformationForm = ({ formData, setFormData }) => {
           handleVerification={validateCustomerInformationForm}
         />
       </div>
-      <p className="font-bold text-2xl mt-8 mb-8">Shipping Information</p>
-      <div className="border rounded py-4 px-8  bg-[#f4f4f4]">
-        <div className="grid grid-cols-2 gap-4">
+      <p className="font-bold text-lg mb-4">Shipping Information</p>
+      <div className=" rounded p-4 bg-slate-50 border ">
+        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
           <FormInput
             labelName={"First Name"}
             inputType={"text"}
@@ -51,14 +51,16 @@ const CustomerInformationForm = ({ formData, setFormData }) => {
           setFormData={setFormData}
           handleVerification={validateCustomerInformationForm}
         />
-        <div className="grid grid-cols-1 gap-4">
+
+        {/* Country and Region Select  */}
+        <div className="grid grid-cols-1">
           <Select
             formData={formData}
             setFormData={setFormData}
             handleVerification={validateCustomerInformationForm}
           />
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
           <FormInput
             labelName={"City"}
             inputType={"text"}

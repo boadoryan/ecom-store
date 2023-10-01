@@ -30,9 +30,9 @@ function CountrySelect({ formData, setFormData }) {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-4 my-4">
-      <div className="w-full">
-        <label className="font-bold text-md" htmlFor="country">
+    <div className="grid grid-cols-1 mb-4">
+      <div className="w-full mb-4">
+        <label className="font-bold text-sm" htmlFor="country">
           Country
         </label>
         <select
@@ -40,7 +40,7 @@ function CountrySelect({ formData, setFormData }) {
           name="country"
           onChange={handleCountryChange}
           value={formData.country}
-          className="bg-white text-black p-4 w-full border rounded mt-4"
+          className="bg-white text-black text-sm px-2 py-3 w-full border rounded mt-2"
         >
           <option value="">Select a country</option>
           {countries.sort().map((country) => (
@@ -52,7 +52,7 @@ function CountrySelect({ formData, setFormData }) {
       </div>
 
       <div className="w-full">
-        <label className="font-bold text-md" htmlFor="region">
+        <label className="font-bold text-sm" htmlFor="region">
           {formData.country === "Canada"
             ? "Province"
             : formData.country === "United States"
@@ -69,7 +69,7 @@ function CountrySelect({ formData, setFormData }) {
           disabled={
             !formData.country || !countriesData.regions[formData.country]
           }
-          className="bg-white text-black p-4 w-full border rounded mt-4"
+          className="bg-white text-black text-sm px-2 py-3  w-full border rounded mt-2"
         >
           <option value="" disabled>
             {formData.country !== "Canada" &&
