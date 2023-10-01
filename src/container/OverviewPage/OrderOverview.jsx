@@ -3,11 +3,15 @@ import PaymentInfoOverview from "./PaymentInfoOverview";
 import CustomerInfoOverview from "./CustomerInfoOverview";
 import PurchasedItemsOverview from "./PurchasedItemsOverview";
 import OrderInfoOverview from "./OrderInfoOverview";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   updatePriceByCurrency,
   formatCreditCardNumber,
 } from "../../utils/stringUtils";
+import { Link } from "react-router-dom";
+import { clearPurchasedItems } from "../../store/cartSlice";
+
+import { useState, useEffect } from "react";
 
 const OrderOverview = ({ formData, total, tax }) => {
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
@@ -19,6 +23,8 @@ const OrderOverview = ({ formData, total, tax }) => {
     exchangeRate,
     currencyToConvertTo
   );
+
+  const dispatch = useDispatch();
 
   const {
     firstName,
@@ -38,12 +44,11 @@ const OrderOverview = ({ formData, total, tax }) => {
   const generateRandomOrderNumber = () => {
     // Generate a random integer between 1 and 9999 (inclusive)
     const randomOrderNumber = Math.floor(Math.random() * 9999) + 1;
-
     // You can add leading zeros if needed to ensure a consistent length, e.g., 0001, 0002, etc.
     const paddedOrderNumber = String(randomOrderNumber).padStart(4, "0");
-
     return paddedOrderNumber;
   };
+
 
   return (
     <>
@@ -52,7 +57,7 @@ const OrderOverview = ({ formData, total, tax }) => {
           <div className="flex justify-center items-center">
             <img
               className="h-[6rem] mb-4 object-contain md:h-[10rem]"
-              src="/public/assets/undraw_order_confirmed_re_g0if.svg"
+              src="assets/undraw_order_confirmed_re_g0if.svg"
               alt=""
             />
           </div>
@@ -98,6 +103,9 @@ const OrderOverview = ({ formData, total, tax }) => {
             />
           </div>
         </div>
+        <Link onClick={() => dispatch(clearPurchasedItems())} to="/">
+          Back To Home
+        </Link>
       </div>
     </>
   );

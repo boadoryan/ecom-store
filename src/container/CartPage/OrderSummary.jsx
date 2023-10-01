@@ -7,12 +7,8 @@ import { updatePriceByCurrency } from "../../utils/stringUtils";
 const Overview = ({ next, total, tax }) => {
   const cart = useSelector((state) => state.cart.items);
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
-  const currencyToConvertTo = useSelector(
-    (state) => state.exchangeRate.currencyToConvertTo
-  );
-  const currencySymbol = useSelector(
-    (state) => state.exchangeRate.currencySymbol
-  );
+  const currencyToConvertTo = useSelector((state) => state.exchangeRate.currencyToConvertTo);
+  const currencySymbol = useSelector((state) => state.exchangeRate.currencySymbol);
 
   return (
     <>

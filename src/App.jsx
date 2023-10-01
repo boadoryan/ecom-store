@@ -1,12 +1,13 @@
 import "./App.css";
 import { useFetchProducts } from "./hooks/useFetchProducts";
-import HomePage from "./container/Home/HomePage";
+import HomePage from "./container/HomePage/HomePage";
 import SelectedProductPage from "./container/SelectedProductPage/SelectedProductPage";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./Navbar";
 import CartPage from "./container/CartPage/CartPage";
 import useFetchExchangeRate from "./hooks/useFetchExchangeRate";
 import { useSelector } from "react-redux";
+import Loading from "./Loading";
 
 function App() {
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
@@ -26,11 +27,13 @@ function App() {
 
   const { data, loading, error } = useFetchProducts(PRODUCTS_URL, exchangeRate);
 
+  // const [allImagesLoaded, setAllImagesLoaded] = useState(false);
+
   return (
     <>
       <Navbar setCurrencyToConvertTo={setCurrencyToConvertTo} />
       {loading ? (
-        <p>Loading...</p>
+        <Loading />
       ) : (
         <Routes>
           <Route

@@ -36,11 +36,19 @@ const cartSlice = createSlice({
       }
     },
 
+    // Clear the current cart.
     clearCart: (state) => {
       state.items = {};
     },
 
-    updatePurchasedItems: (state, action) => {
+    // Clear the purchased items.
+    clearPurchasedItems: (state) => {
+      console.log(state.purchasedItems);
+      state.purchasedItems = {};
+    },
+
+    // Update the purchasedItems array before the cart is cleared.
+    updatePurchasedItems: (state) => {
       state.purchasedItems = { ...state.items };
       console.log(state.purchasedItems);
     },
@@ -54,6 +62,7 @@ export const {
   updateCartPrices,
   clearCart,
   updatePurchasedItems,
+  clearPurchasedItems,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

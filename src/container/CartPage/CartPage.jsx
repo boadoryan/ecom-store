@@ -8,10 +8,10 @@ import Cart from "./Cart";
 import CustomerInformationForm from "./CustomerInformationForm";
 import PaymentForm from "./PaymentForm";
 import OrderSummary from "./OrderSummary";
-import OrderOverview from "../Overview/OrderOverview";
+import OrderOverview from "../OverviewPage/OrderOverview";
 import ErrorModal from "../../ErrorModal";
 
-const CartPage = ({ capitalizeFirstLetter }) => {
+const CartPage = () => {
   const [showCheckout, setShowCheckout] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -44,7 +44,7 @@ const CartPage = ({ capitalizeFirstLetter }) => {
   ]);
 
   const tax = 0.07;
-  const cart = useSelector((state) => state.cart.purchasedItems);
+  const cart = useSelector((state) => state.cart.items);
   const total = Object.values(cart).reduce((accumulator, currentItem) => {
     const itemTotal = currentItem.item.price * currentItem.quantity;
     return accumulator + itemTotal;
@@ -74,10 +74,9 @@ const CartPage = ({ capitalizeFirstLetter }) => {
   };
   return (
     <ResponsiveContainer>
-      {/* <div className="flex flex-col md:mx-20 my-12 md:flex-col lg:flex-col xl:flex-row gap-12 pb-48"> */}
       <div className="flex flex-col md:mx-20 my-12 md:flex-col lg:flex-col xl:flex-row gap-12 pb-48">
         {showOverview ? (
-          <OrderOverview formData={formData} total={total} tax={tax} />
+          <OrderOverview formData={formData} tax={tax} />
         ) : (
           <div className=" md:w-full lg:w-full xl:w-3/5 flex flex-col">
             <form action="" onSubmit={handleSubmit}>
