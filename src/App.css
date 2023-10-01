@@ -23,7 +23,7 @@ body {
       rgba(0, 0, 0, 0) 60%,
       rgba(0, 0, 0, 0.9)
     ),
-    url(assets/electronics_category.jpg);
+    url(public/assets/electronics_category.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
