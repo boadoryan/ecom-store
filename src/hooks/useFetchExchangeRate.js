@@ -7,16 +7,7 @@ const useFetchExchangeRate = (url) => {
   const [currencyToConvertTo, setCurrencyToConvertTo] = useState("cad");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [currencySymbol, setCurrencySymbol] = useState(null); // To be implemented.
   const dispatch = useDispatch();
-
-  // Mapping of currency symbols
-  const currencySymbols = { // To be implemented.
-    usd: "$",
-    cad: "$",
-    gbp: "£",
-    eur: "€",
-  };
 
   useEffect(() => {
     const fetchData = async () => {

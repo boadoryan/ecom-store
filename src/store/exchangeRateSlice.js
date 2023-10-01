@@ -22,12 +22,17 @@ const exchangeRateSlice = createSlice({
       state.baseRate = action.payload;
     },
     updateCurrencySymbol: (state, action) => {
-      if (action.payload === "$") return;
+      console.log(action.payload);
+      if (action.payload === "$") state.currencySymbol = "$";
       state.currencySymbol = action.payload;
     },
   },
 });
 
-export const { updateExchangeRate, updateCurrencyToConvertTo, updateBaseRate } =
-  exchangeRateSlice.actions;
+export const {
+  updateExchangeRate,
+  updateCurrencyToConvertTo,
+  updateBaseRate,
+  updateCurrencySymbol,
+} = exchangeRateSlice.actions;
 export default exchangeRateSlice.reducer;

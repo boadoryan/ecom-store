@@ -1,8 +1,10 @@
 import React from "react";
 import Button from "../../components/Button";
 import { useSelector } from "react-redux";
-import { updatePriceByCurrency } from "../../utils/stringUtils";
-import { capitalizeFirstLetter } from "../../utils/stringUtils";
+import {
+  capitalizeFirstLetter,
+  updatePriceByCurrency,
+} from "../../utils/stringUtils";
 
 const SelectedProductInfo = ({
   data,
@@ -16,6 +18,9 @@ const SelectedProductInfo = ({
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
   const currencyToConvertTo = useSelector(
     (state) => state.exchangeRate.currencyToConvertTo
+  );
+  const currencySymbol = useSelector(
+    (state) => state.exchangeRate.currencySymbol
   );
   const currentProductSelected = data[id - 1];
 
@@ -37,14 +42,15 @@ const SelectedProductInfo = ({
           {updatePriceByCurrency(
             currentProductSelected.price,
             exchangeRate,
-            currencyToConvertTo
+            currencyToConvertTo,
+            currencySymbol
           )}
         </span>
       </div>
 
       {/* Description */}
       <div className="text-md md:text-xl">
-        <div className="font-bold mb-2">Description:</div>
+        <div className="font-bold mb-2 md:my-6">Description:</div>
         {currentProductSelected.description}
       </div>
 
@@ -52,16 +58,22 @@ const SelectedProductInfo = ({
       <div className="text-center md:text-start flex flex-col items-center my-4 md:items-start ">
         <div className="font-bold md:text-xl my-4">Quantity:</div>
         <div className="flex items-center">
-          <button onClick={decrementQuantity} className="rounded p-2 bg-white">
+          <button
+            onClick={decrementQuantity}
+            className="rounded p-2 bg-white border border-black hover:bg-[#f0f0f0]"
+          >
             -
           </button>
           <input
             type="number"
-            className="appearance-none bg-white text-center py-3 px-6 mx-2 rounded leading-tight focus:outline-none custom-no-spin"
+            className="appearance-none border border-black hover:bg-[#f0f0f0] bg-white text-center py-3 px-6 mx-2 rounded leading-tight focus:outline-none custom-no-spin"
             value={quantity}
             onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
           />
-          <button onClick={incrementQuantity} className="rounded p-2 bg-white">
+          <button
+            onClick={incrementQuantity}
+            className="rounded p-2 bg-white border border-black hover:bg-[#f0f0f0]"
+          >
             +
           </button>
         </div>
@@ -69,7 +81,11 @@ const SelectedProductInfo = ({
 
       {/* Add to Cart */}
       <div className="text-center md:text-start mt-2">
-        <Button handleOnClick={addItemWithQuantity} text={"Add To Cart"} />
+        <Button
+          handleOnClick={addItemWithQuantity}
+          isBordered={true}
+          text={"Add To Cart"}
+        />
       </div>
     </div>
   );

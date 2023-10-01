@@ -11,6 +11,11 @@ const ProductListItem = ({ item }) => {
   const currencyToConvertTo = useSelector(
     (state) => state.exchangeRate.currencyToConvertTo
   );
+  const currencySymbol = useSelector(
+    (state) => state.exchangeRate.currencySymbol
+  );
+
+  console.log(currencySymbol);
   return (
     <div className="flex flex-col justify-center py-8 px-4 border-2 border-black rounded bg-white text-center shadow-md hover:scale-105 transition-transform duration-300 ease-in-out">
       <div className="w-full h-48 sm:h-60 md:h-42 lg:h-48 xl:h-48 mb-4 overflow-hidden">
@@ -24,7 +29,12 @@ const ProductListItem = ({ item }) => {
           {item.title}
         </p>
         <p className="font-bold text-xl sm:text-2xl md:text-xl lg:text-xl xl:text-xl">
-          {updatePriceByCurrency(item.price, exchangeRate, currencyToConvertTo)}
+          {updatePriceByCurrency(
+            item.price,
+            exchangeRate,
+            currencyToConvertTo,
+            currencySymbol
+          )}
         </p>
       </div>
     </div>

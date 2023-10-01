@@ -2,7 +2,7 @@ import React from "react";
 import HeroBanner from "./HeroBanner";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
 import FullProductList from "./FullProductList";
-import InfoBanner from "./InfoBanner";
+import FeaturedProduct from "./FeaturedProduct";
 import CategoriesBanner from "./CategoriesBanner";
 
 const HomePage = ({ data }) => {
@@ -10,7 +10,7 @@ const HomePage = ({ data }) => {
     <ResponsiveContainer>
       <HeroBanner />
       <CategoriesBanner data={data} />
-      <InfoBanner data={data} />
+      <FeaturedProduct data={data} />
       <FullProductList data={data} />
     </ResponsiveContainer>
   );
