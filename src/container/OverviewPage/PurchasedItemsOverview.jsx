@@ -31,9 +31,9 @@ const PurchasedItemsOverview = () => {
   }, [dispatch, cartCleared]);
   return (
     <>
-      <div className="mb-4">
+      <div className="mb-4 w-full">
         <h3 className="font-bold text-xl mb-4">Your Items:</h3>
-        <div className="border border-black rounded p-8 flex flex-col  justify-center align-center">
+        <div className="border border-black rounded p-2 flex flex-col  justify-center align-center">
           {Object.keys(cart).map((itemId) => {
             const item = cart[itemId].item;
             const quantity = cart[itemId].quantity;
@@ -66,7 +66,7 @@ const PurchasedItemsOverview = () => {
                 </div>
                 <div className="flex items-center justify-center ">
                   <img
-                    className="h-[6rem] md:h-[6rem] object-contain"
+                    className="h-[6rem] lg:h-[7rem]  object-contain"
                     src={item.image}
                     alt=""
                   />
