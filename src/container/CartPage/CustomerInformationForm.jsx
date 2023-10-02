@@ -1,5 +1,5 @@
 import FormInput from "../../components/FormInput";
-import Select from "../../components/CountrySelect";
+import CountrySelect from "../../components/CountrySelect";
 import { validateCustomerInformationForm } from "../../formValidation";
 const CustomerInformationForm = ({ formData, setFormData }) => {
   return (
@@ -54,7 +54,7 @@ const CustomerInformationForm = ({ formData, setFormData }) => {
 
         {/* Country and Region Select  */}
         <div className="grid grid-cols-1">
-          <Select
+          <CountrySelect
             formData={formData}
             setFormData={setFormData}
             handleVerification={validateCustomerInformationForm}

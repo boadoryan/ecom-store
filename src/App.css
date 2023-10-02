@@ -10,6 +10,15 @@ select:-webkit-autofill,
 select:-webkit-autofill:focus {
   transition: background-color 0s 600000s, color 0s 600000s;
 }
+
+select {
+  -webkit-appearance: none !important;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+  padding-right: 0.5rem !important;
+  padding-left: 0.5rem !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -86,4 +95,7 @@ body {
   position: absolute;
   bottom: 1.5rem;
   left: 1.5rem;
+}
+
+.test {
 }
