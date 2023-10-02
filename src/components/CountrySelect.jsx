@@ -1,7 +1,4 @@
-import React, { useEffect } from "react";
 import countriesData from "../countries.json";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function CountrySelect({ formData, setFormData }) {
   const countries = countriesData.countries;
@@ -40,7 +37,7 @@ function CountrySelect({ formData, setFormData }) {
           name="country"
           onChange={handleCountryChange}
           value={formData.country}
-          className="bg-white text-black text-sm px-2 py-3 w-full border rounded mt-2"
+          className="bg-white text-black text-sm  w-full border rounded mt-2"
         >
           <option value="">Select a country</option>
           {countries.sort().map((country) => (
