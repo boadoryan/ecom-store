@@ -5,7 +5,7 @@ const CartPageHeader = ({ isFirstStep, back }) => {
     <>
       {isFirstStep ? (
         <div>
-          <p className="font-bold text-4xl mb-4">YOUR CART</p>
+          <p className="font-bold text-2xl mb-4 md:text-4xl">Your cart</p>
         </div>
       ) : (
         <div className="flex flex-col md:flex-row md:justify-between mb-16">

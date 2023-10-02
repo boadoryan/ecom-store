@@ -19,12 +19,12 @@ const CartItem = ({ itemId, item, quantity, handleQuantityChange }) => {
   return (
     <div
       key={itemId}
-      className="border border-black rounded cart-item-test md:grid md:grid-cols-9 mb-4 py-4 flex items-center"
+      className="border border-black rounded flex flex-col justify-center items-center md:grid md:grid-cols-9 mb-4 py-4 "
     >
       <div className="col-span-1 px-4 py-2">
         <div className=" flex md:flex justify-center items-center">
           <img
-            className=" h-[10rem] md:h-[5rem] object-contain"
+            className=" h-[10rem] md:h-[6rem] object-contain"
             src={item.image}
             alt=""
           />
@@ -70,7 +70,7 @@ const CartItem = ({ itemId, item, quantity, handleQuantityChange }) => {
           </button>
         </div>
       </div>
-      <div className="col-span-2 px-4 py-2  text-center font-bold md:text-md lg:text-lg ml-4">
+      <div className="col-span-2 px-4 py-2 flex gap-2 md:block  text-center font-bold md:text-md lg:text-lg ml-4">
         <span className="font-bold md:hidden">Item Total:</span>
         <p>
           {updatePriceByCurrency(

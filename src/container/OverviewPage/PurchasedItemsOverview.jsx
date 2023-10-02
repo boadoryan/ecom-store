@@ -66,7 +66,7 @@ const PurchasedItemsOverview = () => {
                 </div>
                 <div className="flex items-center justify-center ">
                   <img
-                    className="h-[6rem] lg:h-[7rem]  object-contain"
+                    className="h-[6rem]   object-contain"
                     src={item.image}
                     alt=""
                   />
