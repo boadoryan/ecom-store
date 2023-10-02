@@ -48,7 +48,7 @@ const OrderOverview = ({ formData, total, tax }) => {
 
   return (
     <>
-      <div className="flex flex-col w-full mt-12 ">
+      <div className="flex flex-col w-full mt-12 items-center ">
         <div className="flex flex-col mb-16 ">
           <div className="flex justify-center items-center">
             <img
@@ -71,7 +71,7 @@ const OrderOverview = ({ formData, total, tax }) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-8 md:flex-row">
+        <div className="flex flex-col gap-8 md:flex-row justify-center align-center">
           <div className="flex-col md:flex-col gap-4 w-full md:w-1/2">
             <CustomerInfoOverview
               firstName={firstName}
