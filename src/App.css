@@ -11,7 +11,7 @@ select:-webkit-autofill:focus {
   transition: background-color 0s 600000s, color 0s 600000s;
 }
 
-select {
+select:not(.currency-select) {
   -webkit-appearance: none !important;
   padding-top: 1rem !important;
   padding-bottom: 1rem !important;
@@ -32,7 +32,7 @@ body {
       rgba(0, 0, 0, 0) 60%,
       rgba(0, 0, 0, 0.9)
     ),
-    url(public/assets/electronics_category.jpg);
+    url(/assets/electronics_category.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
