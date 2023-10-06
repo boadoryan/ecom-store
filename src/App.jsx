@@ -8,7 +8,7 @@ import CartPage from "./container/CartPage/CartPage";
 import useFetchExchangeRate from "./hooks/useFetchExchangeRate";
 import { useSelector } from "react-redux";
 import Loading from "./Loading";
-import ScrollToTop from "./utils/ScrollToTop";
+// import OrderOverview  from "./container/OverviewPage/OrderOverview";
 
 function App() {
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
@@ -53,6 +53,7 @@ function App() {
             }
           ></Route>
           <Route path="/cart" element={<CartPage />}></Route>
+          {/* <Route path="/overview" element={<OrderOverview />}></Route> */}
         </Routes>
       )}
     </>

@@ -20,7 +20,7 @@ const InfoBanner = ({ data }) => {
         Featured Product
       </h2>
       {/* <div className="md:grid md:grid-cols-5 gap-8 lg:grid  lg:grid-cols-5 lg:gap-4 shadow"> */}
-      <div className="grid grid-cols-1 gap-y-4 md:grid-cols-5 md:gap-4">
+      <div className="grid grid-cols-1 gap-y-2 md:grid-cols-5 md:gap-4">
         <div className="col-span-3  border-2 border-black rounded flex justify-center items-center py-4 bg-white ">
           <div className="">
             <img
@@ -30,18 +30,18 @@ const InfoBanner = ({ data }) => {
             />
           </div>
         </div>
-        <div className=" px-4 py-8 md:flex flex-col justify-center lg:px-8 border-2 border-black rounded col-span-2 bg-[#e2ebf8]">
+        <div className=" px-4 py-8 md:flex flex-col justify-center lg:px-8 border-2 border-black rounded col-span-2 bg-[#deecf6]">
           <div className="md:text-xl">
             {capitalizeFirstLetter(randomProduct.category)}
           </div>
-          <div className=" my-4 text-3xl font-bold md:text-3xl md:my-4 lg:text-5xl w-4/5">
+          <div className="mt-2 mb-8 text-3xl font-bold md:text-3xl md:my-4 lg:text-5xl w-4/5">
             {randomProduct.title
               .split(" ") // Split the title into an array of words
               .slice(0, 5) // Select the first 5 words
               .join(" ")}
           </div>
           <Link to={`/product/${randomProduct.id}`}>
-            <button className="border rounded  border-black lg:mt-8 px-6 py-2 hover:bg-[#EAF2FC]">
+            <button className="border rounded  border-black lg:mt-8 px-6 w-[140px] py-3 bg-white hover:bg-[#EAF2FC]">
               Shop Now
             </button>
           </Link>

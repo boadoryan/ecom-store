@@ -24,13 +24,4 @@ body {
   min-height: 100vh;
 }
 
-.gradient-text {
-  /* background: linear-gradient(-70deg, #88d1ae 0%, #3e95f7 100%); */
-  background: linear-gradient(-70deg, #c6d188 15%, #3e95f7 85%);
-  background-clip: text; /* Standard CSS property */
-  -webkit-background-clip: text; /* WebKit-specific property */
-  color: transparent; /* Standard CSS property */
-  -webkit-text-fill-color: transparent; /* WebKi
-  
-  t-specific property */
-}
+

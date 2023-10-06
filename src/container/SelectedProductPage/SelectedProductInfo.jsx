@@ -50,20 +50,20 @@ const SelectedProductInfo = ({ data, id }) => {
   };
 
   return (
-    <div className="p-6 lg:p-10 rounded bg-[#e2ebf8] h-full flex flex-col border-2 border-black">
+    <div className="rounded bg-[#e2ebf8] flex flex-col border-2 border-black p-4 sm:p-6 md:p-8 xl:p-12">
       {/* Category Name */}
-      <div className="md:text-start mb-2">
+      <div className="mb-2 text-xs md:text-sm xl:text-base">
         {capitalizeFirstLetter(currentProductSelected.category)}
       </div>
 
       {/* Product Title */}
-      <div className="font-bold text-xl md:text-3xl">
+      <div className="text-lg sm:text-2xl md:text-3xl font-bold xl:text-4xl ">
         {currentProductSelected.title}
       </div>
 
       {/* Price */}
-      <div className="md:text-start my-6">
-        <span className="text-4xl font-bold">
+      <div className="font-bold text-2xl md:text-3xl xl:text-4xl my-4">
+        <span className="">
           {updatePriceByCurrency(
             currentProductSelected.price,
             exchangeRate,
@@ -74,30 +74,32 @@ const SelectedProductInfo = ({ data, id }) => {
       </div>
 
       {/* Description */}
-      <div className="text-md md:text-lg">
-        <div className="font-bold mb-2">Description:</div>
-        {currentProductSelected.description}
+      <div>
+        <div className="text-base font-medium mb-2 md:text-lg ">Description:</div>
+        <p className="text-base sm:text-base md:text-lg ">
+          {currentProductSelected.description}
+        </p>
       </div>
 
       {/* Quantity */}
-      <div className="md:text-start flex flex-col  md:items-start my-6">
-        <div className="font-bold md:text-lg mb-4 self-start">Quantity:</div>
-        <div className="flex items-center">
+      <div className="my-8">
+        <div className="mb-2 font-medium md:text-lg">Quantity:</div>
+        <div className="flex">
           <button
             onClick={decrementQuantity}
-            className="rounded p-2 bg-white border border-black hover:bg-[#f0f0f0]"
+            className="border border-black py-1 px-2 rounded bg-white hover:bg-[#f0f0f0]"
           >
             -
           </button>
           <input
             type="number"
-            className="appearance-none border border-black hover:bg-[#f0f0f0] bg-white text-center py-3 mx-2 rounded leading-tight focus:outline-none custom-no-spin"
+            className="appearance-none border border-black hover:bg-[#f0f0f0] bg-white w-full text-center py-1.5 sm:py-2.5 xl:py-3 md:w-[200px] lg:w-[200px] px-10 mx-2 rounded leading-tight focus:-none custom-no-spin"
             value={quantity}
             onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
           />
           <button
             onClick={incrementQuantity}
-            className="rounded p-2 bg-white border border-black hover:bg-[#f0f0f0]"
+            className="border border-black py-1 px-2 rounded bg-white hover:bg-[#f0f0f0]"
           >
             +
           </button>
@@ -106,16 +108,16 @@ const SelectedProductInfo = ({ data, id }) => {
 
       {/* Add to Cart */}
       <div className="relative">
-        <div className="text-center md:text-start">
-          <Button
-            handleOnClick={addItemWithQuantity}
-            isBordered={true}
-            text={"Add To Cart"}
-            className="px-4 py-2 border border-black hover:bg-gray-200"
-          />
+        <div className="">
+          <button
+            onClick={addItemWithQuantity}
+            className="border border-black rounded w-full p-2 sm:py-2.5 md:p-3 xl:p-4 bg-white hover:bg-[#f0f0f0]"
+          >
+            Add To Cart
+          </button>
         </div>
         {showPopup && (
-          <div className="absolute min-w-[280px] text-center -top-10 left-1/2 transform -translate-x-1/2 bg-white p-2 border border-gray-300 rounded shadow-md">
+          <div className="absolute min-w-[280px] text-center -top-10 left-1/2 transform -translate-x-1/2 bg-white  p-2 border border-gray-300 rounded shadow-md">
             Item successfully added to cart!
           </div>
         )}
