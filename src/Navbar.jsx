@@ -32,12 +32,12 @@ const Navbar = ({ setCurrencyToConvertTo }) => {
 
   return (
     <nav className="py-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 shadow-sm bg-[#f0f0f0]">
-      <div className="flex flex-col px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
+      <div className="flex flex-col px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 border">
         <div className="flex flex-col sm:flex-row justify-between items-center">
           <Link to="/" className="text-black font-bold text-xl sm:text-2xl">
             Trendie
           </Link>
-          <ul className="flex  items-center space-x-6 mt-4 sm:mt-0">
+          <ul className="flex border gap-20 md:gap-0 space-x-6 mt-4 sm:mt-0">
             <li>
               <label htmlFor="currency" className="">
                 Currency:
@@ -46,7 +46,7 @@ const Navbar = ({ setCurrencyToConvertTo }) => {
                 onChange={(e) => handleCurrencyChange(e)}
                 name="currency"
                 id="id"
-                className="bg-white px-2 py-1 font-bold ml-2 rounded"
+                className="bg-white px-2 py-1 font-bold ml-2 rounded currency-select"
                 defaultValue={currencyToConvertTo}
               >
                 <option value="cad">CAD</option>
