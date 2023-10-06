@@ -1,9 +1,12 @@
 import React from "react";
 import FormInput from "../../components/FormInput";
 import { validatePaymentForm } from "../../formValidation";
+import ScrollToTop from "../../utils/ScrollToTop";
 const PaymentForm = ({ formData, setFormData }) => {
+
   return (
     <>
+      <ScrollToTop/>
       <p className="font-bold text-xl  mb-4">Payment Information</p>
       <div className=" rounded p-4 border bg-slate-50 my-4">
         <FormInput

@@ -10,6 +10,7 @@ import PaymentForm from "./PaymentForm";
 import OrderSummary from "./OrderSummary";
 import OrderOverview from "../OverviewPage/OrderOverview";
 import ErrorModal from "../../ErrorModal";
+import ScrollToTop from "../../utils/ScrollToTop";
 
 const CartPage = () => {
   const [showCheckout, setShowCheckout] = useState(false);
@@ -74,6 +75,7 @@ const CartPage = () => {
   };
   return (
     <ResponsiveContainer>
+      <ScrollToTop />
       <div className="flex flex-col md:my-4 md:flex-col lg:flex-col xl:flex-row gap-12 pb-48">
         {showOverview ? (
           <OrderOverview formData={formData} tax={tax} />

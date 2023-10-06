@@ -45,7 +45,7 @@ body {
       rgba(0, 0, 0, 0) 60%,
       rgba(0, 0, 0, 0.9)
     ),
-    url(public/assets/clothing_category.jpg);
+    url(/assets/clothing_category.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -58,7 +58,7 @@ body {
       rgba(0, 0, 0, 0) 60%,
       rgba(0, 0, 0, 0.9)
     ),
-    url(public/assets/jewelry_category.jpg);
+    url(/assets/jewelry_category.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -71,7 +71,7 @@ body {
       rgba(0, 0, 0, 0) 60%,
       rgba(0, 0, 0, 0.8)
     ),
-    url(public/assets/womens_clothing_category.jpg);
+    url(/assets/womens_clothing_category.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -84,7 +84,7 @@ body {
       rgba(0, 0, 0, 0) 60%,
       rgba(0, 0, 0, 0.8)
     ),
-    url(public/assets/mens_clothing_category2.jpg);
+    url(/assets/mens_clothing_category2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
