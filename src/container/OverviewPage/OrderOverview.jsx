@@ -11,6 +11,7 @@ import {
 } from "../../utils/stringUtils";
 import { Link } from "react-router-dom";
 import { clearPurchasedItems } from "../../store/cartSlice";
+import ScrollToTop from "../../utils/ScrollToTop";
 
 const OrderOverview = ({ formData, total, tax }) => {
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
@@ -42,9 +43,10 @@ const OrderOverview = ({ formData, total, tax }) => {
 
   return (
     <>
+      <ScrollToTop/>
       <div className="flex flex-col w-full mt-12 justify-center align-center items-center ">
         <OrderConfirmation />
-        <div className="flex flex-col gap-24 md:flex-row">
+        <div className="flex flex-col gap-8 lg:gap-24 md:flex-row">
           <div className="flex-col md:flex-col w-full md:w-1/2">
             <CustomerInfoOverview
               firstName={firstName}

@@ -1,9 +1,11 @@
 import FormInput from "../../components/FormInput";
 import CountrySelect from "../../components/CountrySelect";
 import { validateCustomerInformationForm } from "../../formValidation";
+import ScrollToTop from "../../utils/ScrollToTop";
 const CustomerInformationForm = ({ formData, setFormData }) => {
   return (
     <>
+      <ScrollToTop />
       <p className="font-bold text-lg">Contact Information</p>
       <div className=" rounded p-4 border bg-slate-50 my-4">
         <FormInput

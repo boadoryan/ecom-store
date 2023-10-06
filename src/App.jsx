@@ -8,6 +8,7 @@ import CartPage from "./container/CartPage/CartPage";
 import useFetchExchangeRate from "./hooks/useFetchExchangeRate";
 import { useSelector } from "react-redux";
 import Loading from "./Loading";
+import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);

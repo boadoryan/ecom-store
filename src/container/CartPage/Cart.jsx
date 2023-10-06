@@ -5,7 +5,9 @@ import CartItem from "./CartItem";
 const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.items);
-  const handleQuantityChange = (itemId, newQuantity) => {dispatch(updateItemQuantity({ id: itemId, quantity: newQuantity }))};
+  const handleQuantityChange = (itemId, newQuantity) => {
+    dispatch(updateItemQuantity({ id: itemId, quantity: newQuantity }));
+  };
   return (
     <>
       {Object.keys(cart).length > 0 ? (
@@ -48,7 +50,7 @@ const Cart = () => {
         <div className="flex flex-col gap-8 justify-center items-center">
           <img
             className="h-[18rem]"
-            src="assets/undraw_empty_cart_co35.svg"
+            src="assets/Add to Cart-amico.svg"
             alt=""
           />
           <p className="text-xl">Looks like your cart is empty.</p>

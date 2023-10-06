@@ -4,10 +4,12 @@ import ResponsiveContainer from "../../components/ResponsiveContainer";
 import FullProductList from "./FullProductList";
 import FeaturedProduct from "./FeaturedProduct";
 import CategoriesBanner from "./CategoriesBanner";
+import ScrollToTop from "../../utils/ScrollToTop";
 
 const HomePage = ({ data }) => {
   return (
     <ResponsiveContainer>
+      <ScrollToTop/>
       <HeroBanner />
       <CategoriesBanner data={data} />
       <FeaturedProduct data={data} />

@@ -41,7 +41,7 @@ const InfoBanner = ({ data }) => {
               .join(" ")}
           </div>
           <Link to={`/product/${randomProduct.id}`}>
-            <button className="border rounded  border-black lg:mt-8 px-6 py-2 hover:bg-[#f0f0f0]">
+            <button className="border rounded  border-black lg:mt-8 px-6 py-2 hover:bg-[#EAF2FC]">
               Shop Now
             </button>
           </Link>
