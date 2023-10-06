@@ -4,6 +4,9 @@
   margin: 0;
 }
 
+* {
+  box-sizing: border-box;
+}
 input:-webkit-autofill,
 input:-webkit-autofill:focus,
 select:-webkit-autofill,
@@ -24,6 +27,10 @@ html {
 }
 body {
   background-color: rgb(255, 255, 255);
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  place-items: center; */
 }
 
 .homepage-category-electronics-container {
@@ -97,5 +104,13 @@ body {
   left: 1.5rem;
 }
 
-.test {
+.gradient-text {
+  /* background: linear-gradient(-70deg, #88d1ae 0%, #3e95f7 100%); */
+  background: linear-gradient(-70deg, #a5af6d 15%, #3e95f7 85%);
+  background-clip: text; /* Standard CSS property */
+  -webkit-background-clip: text; /* WebKit-specific property */
+  color: transparent; /* Standard CSS property */
+  -webkit-text-fill-color: transparent; /* WebKi
+  
+  t-specific property */
 }

@@ -1,22 +1,23 @@
 const HeroBanner = () => {
   return (
     <>
-      <div className=" bg-[#e2ebf8] border-2 border-black flex flex-col  justify-between items-center rounded mb-16 md:flex md:flex-row md:px-8 lg:px-12 ">
-        <div className="flex justify-center align-center md:order-1 md:mr-12 2xl:mr-48 py-4">
+      <div className=" bg-[#deecf6] grid md:grid-cols-2 border-2 border-black rounded mb-8 md:mb-20">
+        <div className="md:order-1 flex justify-center items-center  md:col-span-1 ">
           <img
-            className="object-fill h-[340px] md:h-[340px] lg:h-[380px] 2xl:h-[440px]"
+            className=" w-[350px] xl:w-[auto] xl:max-h-[500px] object-cover"
             src="assets/Catalogue-amico.svg"
             alt=""
           />
         </div>
-        <div className="p-8 xl:w-[700px] 2xl:w-[760px] 2xl:ml-12">
-          <h3 className="text-black mb-8 md:mb-6 flex font-bold text-6xl md:text-5xl lg:text-6xl xl:text-7xl">
-            Find everything you need
+        <div className="flex justify-center align-center flex-col p-6 sm:p-8 md:p-12">
+          <h3 className="text-black mb-2 text-base xl:text-xl">
+            Welcome to Trendie!
           </h3>
-          <h3 className="text-black mb-8 md:mb-6  flex font-medium text-2xl md:text-lg lg:text-2xl">
-            Only at Trendie
+          <h3 className="text-black mb-12  font-bold text-7xl xl:text-8xl ">
+            Find <span className="gradient-text">everything</span> you need at the best prices.
           </h3>
-          <button className="border rounded text-lg text-black  border-black py-3 md:py-2 w-[140px] hover:bg-[#EAF2FC]">
+          {/* <h3 className="text-black mb-6 text-xl xl:text-2xl">Only at Trendie</h3> */}
+          <button className="border rounded text-lg text-black w-[140px]  border-black py-3 bg-white hover:bg-[#cde2cd]">
             Shop Now
           </button>
         </div>

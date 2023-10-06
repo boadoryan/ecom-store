@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useMultistepForm } from "../../hooks/useMultistepForm";
 import { updatePurchasedItems } from "../../store/cartSlice";
+import { useNavigate } from "react-router";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
 import CartPageHeader from "./CartPageHeader";
 import Cart from "./Cart";
@@ -55,6 +56,7 @@ const CartPage = () => {
   // const [allFieldsValidated, setAllFieldsValidated] = useState(false);
   const [showOverview, setShowOverview] = useState(false);
   const [showError, setShowError] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -66,8 +68,7 @@ const CartPage = () => {
       dispatch(updatePurchasedItems());
       setShowOverview(true);
       setShowError(false);
-
-      console.log("Form Data:", formData);
+      // navigate("/overview");
     } else {
       console.log("Some fields are missing.");
       setShowError(true);
