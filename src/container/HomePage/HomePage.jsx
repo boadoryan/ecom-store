@@ -8,13 +8,15 @@ import ScrollToTop from "../../utils/ScrollToTop";
 
 const HomePage = ({ data }) => {
   return (
-    <ResponsiveContainer>
-      <ScrollToTop/>
-      <HeroBanner />
-      <CategoriesBanner data={data} />
-      <FeaturedProduct data={data} />
-      <FullProductList data={data} />
-    </ResponsiveContainer>
+    <div className="outline flex justify-center align-center">
+      <ResponsiveContainer>
+        <ScrollToTop />
+        <HeroBanner />
+        <CategoriesBanner data={data} />
+        <FeaturedProduct data={data} />
+        <FullProductList data={data} />
+      </ResponsiveContainer>
+    </div>
   );
 };
 

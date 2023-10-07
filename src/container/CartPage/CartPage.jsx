@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useMultistepForm } from "../../hooks/useMultistepForm";
 import { updatePurchasedItems } from "../../store/cartSlice";
 import { useNavigate } from "react-router";
+import PageContainer from "../../components/PageContainer";
 import ResponsiveContainer from "../../components/ResponsiveContainer";
 import CartPageHeader from "./CartPageHeader";
 import Cart from "./Cart";

@@ -53,7 +53,6 @@ function App() {
             }
           ></Route>
           <Route path="/cart" element={<CartPage />}></Route>
-          {/* <Route path="/overview" element={<OrderOverview />}></Route> */}
         </Routes>
       )}
     </>
