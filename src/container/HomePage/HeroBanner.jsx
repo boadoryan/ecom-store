@@ -17,7 +17,7 @@ const HeroBanner = () => {
             Find <span className="gradient-text">everything</span> you need at the best prices.
           </h3>
           {/* <h3 className="text-black mb-6 text-xl xl:text-2xl">Only at Trendie</h3> */}
-          <button className="border rounded text-lg text-black w-[140px]  border-black py-3 bg-white hover:bg-[#cde2cd]">
+          <button className="border rounded text-lg text-black w-[140px]  border-black py-1.5 bg-white hover:bg-[#cde2cd]">
             Shop Now
           </button>
         </div>
