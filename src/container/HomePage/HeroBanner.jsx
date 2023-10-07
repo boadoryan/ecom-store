@@ -4,7 +4,7 @@ const HeroBanner = () => {
       <div className=" bg-[#deecf6] grid md:grid-cols-2 border-2 border-black rounded mb-8 md:mb-20">
         <div className="md:order-1 flex justify-center items-center  md:col-span-1 ">
           <img
-            className=" w-[350px] xl:w-[auto] xl:max-h-[500px] object-cover"
+            className=" w-[300px] xl:w-[auto] xl:max-h-[500px] object-cover"
             src="assets/Catalogue-amico.svg"
             alt=""
           />
@@ -13,7 +13,7 @@ const HeroBanner = () => {
           <h3 className="text-black mb-2 text-base xl:text-xl">
             Welcome to Trendie!
           </h3>
-          <h3 className="text-black mb-12  font-bold text-7xl xl:text-8xl ">
+          <h3 className="text-black mb-12  font-bold text-6xl xl:text-8xl ">
             Find <span className="gradient-text">everything</span> you need at the best prices.
           </h3>
           {/* <h3 className="text-black mb-6 text-xl xl:text-2xl">Only at Trendie</h3> */}
