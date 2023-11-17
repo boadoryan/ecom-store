@@ -39,14 +39,15 @@ const SelectedProductInfo = ({ data, id }) => {
 
   const addItemWithQuantity = () => {
     const itemToAdd = data[id - 1];
-    const quantityToAdd = quantity; // Get the quantity
-    dispatch(addItemToCart({ item: itemToAdd, quantity: quantityToAdd })); // Pass the object with named properties
+    const quantityToAdd = quantity;
+
+    dispatch(addItemToCart({ item: itemToAdd, quantity: quantityToAdd }));
+
     setShowPopup(true);
 
-    // Hide the popup message after a few seconds (e.g., 3 seconds)
     setTimeout(() => {
       setShowPopup(false);
-    }, 3000); // Adjust the duration as needed
+    }, 3000);
   };
 
   return (
@@ -75,7 +76,9 @@ const SelectedProductInfo = ({ data, id }) => {
 
       {/* Description */}
       <div>
-        <div className="text-base font-medium mb-2 md:text-lg ">Description:</div>
+        <div className="text-base font-medium mb-2 md:text-lg ">
+          Description:
+        </div>
         <p className="text-base sm:text-base md:text-lg ">
           {currentProductSelected.description}
         </p>
@@ -111,7 +114,7 @@ const SelectedProductInfo = ({ data, id }) => {
         <div className="">
           <button
             onClick={addItemWithQuantity}
-            className="border border-black rounded w-full p-2 sm:py-2.5 md:p-3 xl:p-4 bg-white hover:bg-[#f0f0f0]"
+            className="border border-black rounded w-full py-2.5 bg-white hover:bg-[#f4f4f4]"
           >
             Add To Cart
           </button>

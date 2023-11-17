@@ -12,7 +12,7 @@ import PaymentForm from "./PaymentForm";
 import OrderSummary from "./OrderSummary";
 import OrderOverview from "../OverviewPage/OrderOverview";
 import ErrorModal from "../../ErrorModal";
-import ScrollToTop from "../../utils/ScrollToTop";
+import { ScrollToTop } from "../../utils/scrollUtils";
 
 const CartPage = () => {
   const [showCheckout, setShowCheckout] = useState(false);
@@ -46,7 +46,6 @@ const CartPage = () => {
     <PaymentForm formData={formData} setFormData={setFormData} />,
   ]);
 
-  const tax = 0.07;
   const cart = useSelector((state) => state.cart.items);
   const total = Object.values(cart).reduce((accumulator, currentItem) => {
     const itemTotal = currentItem.item.price * currentItem.quantity;
@@ -69,7 +68,7 @@ const CartPage = () => {
       dispatch(updatePurchasedItems());
       setShowOverview(true);
       setShowError(false);
-      // navigate("/overview");
+      navigate("/overview", { state: formData });
     } else {
       console.log("Some fields are missing.");
       setShowError(true);
@@ -78,42 +77,38 @@ const CartPage = () => {
   return (
     <ResponsiveContainer>
       <ScrollToTop />
-      <div className="flex flex-col md:my-4 md:flex-col lg:flex-col xl:flex-row gap-12 pb-48">
-        {showOverview ? (
-          <OrderOverview formData={formData} tax={tax} />
-        ) : (
-          <div className=" md:w-full lg:w-full xl:w-3/5 flex flex-col">
-            <form action="" onSubmit={handleSubmit}>
-              <CartPageHeader isFirstStep={isFirstStep} back={back} />
-              {step}
-              <div className="flex justify-end">
-                {!isFirstStep && !isLastStep ? (
-                  <div className="self-end">
-                    <button
-                      className="mt-4 border border-black rounded px-6 py-2 hover:bg-[#f0f0f0]"
-                      onClick={next}
-                      type="button"
-                    >
-                      Next
-                    </button>
-                  </div>
-                ) : null}
-                {isLastStep && (
-                  <div className="group relative">
-                    <button
-                      type="submit"
-                      className="mt-4 border border-black rounded px-6 py-2 hover:bg-[#f0f0f0] disabled:opacity-50 disabled:cursor-not-allowed"
-                      onClick={handleSubmit}
-                    >
-                      Submit
-                    </button>
-                  </div>
-                )}
-              </div>
-            </form>
-            {showError && <ErrorModal setShowError={setShowError} />}
-          </div>
-        )}
+      <div className="flex flex-col md:my-4 md:flex-col lg:flex-col xl:flex-row gap-12">
+        <div className=" md:w-full lg:w-full xl:w-3/5 flex flex-col">
+          <form className="w-full" action="" onSubmit={handleSubmit}>
+            <CartPageHeader isFirstStep={isFirstStep} back={back} />
+            {step}
+            <div className="flex justify-end">
+              {!isFirstStep && !isLastStep ? (
+                <div className="self-end">
+                  <button
+                    className="mt-8 border border-black rounded py-2.5 w-[104px] bg-white hover:bg-[#f4f4f4]"
+                    onClick={next}
+                    type="button"
+                  >
+                    Next
+                  </button>
+                </div>
+              ) : null}
+              {isLastStep && (
+                <div className="group relative">
+                  <button
+                    type="submit"
+                    className="mt-4 border border-black rounded py-2.5 w-[104px] bg-white hover:bg-[#f4f4f4] disabled:opacity-50 disabled:cursor-not-allowed"
+                    onClick={handleSubmit}
+                  >
+                    Submit
+                  </button>
+                </div>
+              )}
+            </div>
+          </form>
+          {showError && <ErrorModal setShowError={setShowError} />}
+        </div>
         {!showOverview ? (
           <div className="md:w-full lg:w-full xl:w-2/5">
             <OrderSummary
@@ -121,7 +116,6 @@ const CartPage = () => {
               next={next}
               back={back}
               total={total}
-              tax={tax}
               isFirstStep={isFirstStep}
             />
           </div>

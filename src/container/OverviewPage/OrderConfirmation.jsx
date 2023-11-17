@@ -2,7 +2,6 @@ import React from "react";
 
 const OrderConfirmation = () => {
   const generateRandomOrderNumber = () => {
-    // Generate a random integer between 1 and 9999 (inclusive)
     const randomOrderNumber = Math.floor(Math.random() * 9999) + 1;
     const paddedOrderNumber = String(randomOrderNumber).padStart(4, "0");
     return paddedOrderNumber;
@@ -13,9 +12,9 @@ const OrderConfirmation = () => {
       <div className="flex flex-col mb-16 ">
         <div className="flex justify-center items-center">
           <img
-            className="h-[8rem] mb-12 object-contain md:h-[10rem]"
-            src="assets/undraw_order_confirmed_re_g0if.svg"
-            alt=""
+            className="h-[16rem] mb-12 object-contain"
+            src="assets/order_successful.svg"
+            alt="order confirmed"
           />
         </div>
         <h1 className=" text-3xl md:text-6xl font-bold text-center">

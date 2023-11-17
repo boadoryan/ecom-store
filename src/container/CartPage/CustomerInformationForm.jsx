@@ -1,7 +1,7 @@
 import FormInput from "../../components/FormInput";
 import CountrySelect from "../../components/CountrySelect";
 import { validateCustomerInformationForm } from "../../formValidation";
-import ScrollToTop from "../../utils/ScrollToTop";
+import { ScrollToTop } from "../../utils/scrollUtils";
 const CustomerInformationForm = ({ formData, setFormData }) => {
   return (
     <>

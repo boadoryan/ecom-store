@@ -2,7 +2,7 @@ import React from "react";
 import { updatePriceByCurrency } from "../../utils/stringUtils";
 
 import { useSelector } from "react-redux";
-const OrderInfoOverview = ({ tax }) => {
+const OrderInfoOverview = () => {
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
   const currencyToConvertTo = useSelector(
     (state) => state.exchangeRate.currencyToConvertTo
@@ -16,10 +16,11 @@ const OrderInfoOverview = ({ tax }) => {
     const itemTotal = currentItem.item.price * currentItem.quantity;
     return accumulator + itemTotal;
   }, 0);
+  const tax = 0.07;
 
   const totalWithTax = total * tax;
   const finalTotal = total * tax + total;
-  console.log(cart, total, finalTotal);
+
 
   return (
     <div className="mb-8">

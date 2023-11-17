@@ -48,12 +48,8 @@ const Cart = () => {
         </div>
       ) : (
         <div className="flex flex-col gap-8 justify-center items-center">
-          <img
-            className="h-[18rem]"
-            src="assets/Add to Cart-amico.svg"
-            alt=""
-          />
-          <p className="text-xl">Looks like your cart is empty.</p>
+          <img className="h-[18rem]" src="assets/empty_cart.svg" alt="" />
+          <p className="text-xl font-bold">Looks like your cart is empty.</p>
         </div>
       )}
     </>

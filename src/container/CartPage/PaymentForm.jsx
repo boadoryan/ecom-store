@@ -1,7 +1,7 @@
 import React from "react";
 import FormInput from "../../components/FormInput";
 import { validatePaymentForm } from "../../formValidation";
-import ScrollToTop from "../../utils/ScrollToTop";
+import { ScrollToTop } from "../../utils/scrollUtils";
 const PaymentForm = ({ formData, setFormData }) => {
 
   return (

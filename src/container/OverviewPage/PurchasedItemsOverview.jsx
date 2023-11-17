@@ -6,29 +6,21 @@ import { updatePriceByCurrency } from "../../utils/stringUtils";
 const PurchasedItemsOverview = () => {
   const cart = useSelector((state) => state.cart.purchasedItems);
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
-  const currencyToConvertTo = useSelector(
-    (state) => state.exchangeRate.currencyToConvertTo
-  );
-  const currencySymbol = useSelector(
-    (state) => state.exchangeRate.currencySymbol
-  );
+  const currencyToConvertTo = useSelector((state) => state.exchangeRate.currencyToConvertTo);
+  const currencySymbol = useSelector((state) => state.exchangeRate.currencySymbol);
 
   const dispatch = useDispatch();
 
-  // State variable to track whether the cart has been cleared or not
   const [cartCleared, setCartCleared] = useState(false);
+
   useEffect(() => {
     if (!cartCleared) {
-      // Set cartCleared to true to prevent clearing the cart multiple times
       setCartCleared(true);
-
-      // Introduce a 3-second delay before clearing the cart
       setTimeout(() => {
-        // After the delay, clear the cart
         dispatch(clearCart());
-      }, 3000); // 3000 milliseconds = 3 seconds
+      }, 3000);
     }
-  }, [dispatch, cartCleared]);
+  }, []);
   return (
     <>
       <div className="mb-4 w-full">
@@ -66,7 +58,7 @@ const PurchasedItemsOverview = () => {
                 </div>
                 <div className="flex items-center justify-center ">
                   <img
-                    className="h-[6rem]   object-contain"
+                    className="h-[6rem] object-contain"
                     src={item.image}
                     alt=""
                   />

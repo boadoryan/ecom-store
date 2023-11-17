@@ -3,9 +3,9 @@ import Button from "../../components/Button";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { updatePriceByCurrency } from "../../utils/stringUtils";
-import ScrollToTop from "../../utils/ScrollToTop";
+import { ScrollToTop } from "../../utils/scrollUtils";
 
-const Overview = ({ next, total, tax, isFirstStep }) => {
+const Overview = ({ next, total, isFirstStep }) => {
   const cart = useSelector((state) => state.cart.items);
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
   const currencyToConvertTo = useSelector(
@@ -14,7 +14,7 @@ const Overview = ({ next, total, tax, isFirstStep }) => {
   const currencySymbol = useSelector(
     (state) => state.exchangeRate.currencySymbol
   );
-
+  const tax = 0.07;
   return (
     <>
       <div>
@@ -64,17 +64,18 @@ const Overview = ({ next, total, tax, isFirstStep }) => {
             </div>
             <div>
               {Object.keys(cart).length > 0 && isFirstStep ? (
-                <Button
-                  text={"Checkout"}
-                  isBordered={true}
-                  hoverColor={"#e6ede8"}
-                  handleOnClick={next}
-                />
+                <button
+                  onClick={next}
+                  className="w-full rounded py-3 bg-white hover:bg-[#f4f4f4] border border-black
+              mt-6"
+                >
+                  Checkout
+                </button>
               ) : null}
             </div>
             <Link
-              className="w-full rounded px-2 py-4 border text-center bg-white hover:bg-[#f0f0f0] border-black
-              my-4"
+              className="w-full rounded py-3 bg-white hover:bg-[#f4f4f4] border text-center border-black
+              mt-2"
               to="/"
             >
               Continue Shopping

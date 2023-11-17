@@ -11,19 +11,16 @@ import {
 } from "../../utils/stringUtils";
 import { Link } from "react-router-dom";
 import { clearPurchasedItems } from "../../store/cartSlice";
-import ScrollToTop from "../../utils/ScrollToTop";
+import { ScrollToTop } from "../../utils/scrollUtils";
+import { useLocation } from "react-router-dom";
+import ResponsiveContainer from "../../components/ResponsiveContainer";
 
-const OrderOverview = ({ formData, total, tax }) => {
+const OrderOverview = ({ total }) => {
   const exchangeRate = useSelector((state) => state.exchangeRate.exchangeRate);
   const currencyToConvertTo = useSelector(
     (state) => state.exchangeRate.currencyToConvertTo
   );
-  const finalTotal = updatePriceByCurrency(
-    total * tax + total,
-    exchangeRate,
-    currencyToConvertTo
-  );
-
+  const state = useLocation();
   const dispatch = useDispatch();
 
   const {
@@ -39,53 +36,47 @@ const OrderOverview = ({ formData, total, tax }) => {
     cardNumber,
     nameOnCard,
     expirationDate,
-  } = formData;
+  } = state.state;
 
   return (
     <>
-      <ScrollToTop/>
-      <div className="flex flex-col w-full mt-12 justify-center align-center items-center ">
-        <OrderConfirmation />
-        <div className="flex flex-col gap-8 lg:gap-24 md:flex-row">
-          <div className="flex-col md:flex-col w-full md:w-1/2">
-            <CustomerInfoOverview
-              firstName={firstName}
-              lastName={lastName}
-              address={address}
-              city={capitalizeFirstLetter(city)}
-              region={capitalizeFirstLetter(region)}
-              country={country}
-              postalCode={postalCode}
-              phoneNumber={phoneNumber}
-              email={email}
-            />
-            <PaymentInfoOverview
-              cardNumber={formatCreditCardNumber(cardNumber)}
-              expirationDate={expirationDate}
-              nameOnCard={nameOnCard}
-            />
-            <OrderInfoOverview
-              finalTotal={finalTotal}
-              total={total}
-              tax={tax}
-            />
-            <Link
-              className="mt-4 border border-black rounded px-6 py-2 hover:bg-[#f0f0f0]"
-              onClick={() => dispatch(clearPurchasedItems())}
-              to="/"
-            >
-              Back To Home
-            </Link>
-          </div>
-          <div className="md:w-1/2 -order-1 md:order-1 ">
-            <PurchasedItemsOverview
-              finalTotal={finalTotal}
-              total={total}
-              tax={tax}
-            />
+      <ResponsiveContainer>
+        <ScrollToTop />
+        <div className="flex flex-col w-full mt-12 justify-center items-center px-2 ">
+          <OrderConfirmation />
+          <div className="flex flex-col gap-8 lg:gap-24 md:flex-row">
+            <div className="flex-col md:flex-col w-full">
+              <CustomerInfoOverview
+                firstName={firstName}
+                lastName={lastName}
+                address={address}
+                city={capitalizeFirstLetter(city)}
+                region={capitalizeFirstLetter(region)}
+                country={country}
+                postalCode={postalCode}
+                phoneNumber={phoneNumber}
+                email={email}
+              />
+              <PaymentInfoOverview
+                cardNumber={formatCreditCardNumber(cardNumber)}
+                expirationDate={expirationDate}
+                nameOnCard={nameOnCard}
+              />
+              <OrderInfoOverview total={total} />
+              <Link
+                className="mt-4 border border-black rounded px-6 py-2.5 bg-white hover:bg-[#f4f4f4]"
+                onClick={() => dispatch(clearPurchasedItems())}
+                to="/"
+              >
+                Back To Home
+              </Link>
+            </div>
+            <div className="-order-1 md:order-1 w-full">
+              <PurchasedItemsOverview total={total} />
+            </div>
           </div>
         </div>
-      </div>
+      </ResponsiveContainer>
     </>
   );
 };

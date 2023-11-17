@@ -22,7 +22,6 @@ const exchangeRateSlice = createSlice({
       state.baseRate = action.payload;
     },
     updateCurrencySymbol: (state, action) => {
-      console.log(action.payload);
       if (action.payload === "$") state.currencySymbol = "$";
       state.currencySymbol = action.payload;
     },

@@ -18,7 +18,7 @@ const CartPageHeader = ({ isFirstStep, back }) => {
           <div>
             {!isFirstStep ? (
               <button
-                className="mt-4 border border-black rounded px-6 py-2 hover:bg-[#f0f0f0]"
+                className="mt-4 border border-black rounded py-2.5 w-[104px] bg-white hover:bg-[#f4f4f4]"
                 onClick={back}
                 type="button"
               >
